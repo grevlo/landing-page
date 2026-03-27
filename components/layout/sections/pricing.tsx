@@ -1,139 +1,68 @@
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-enum PopularPlan {
-  NO = 0,
-  YES = 1,
-}
-
-interface PlanProps {
-  title: string;
-  popular: PopularPlan;
-  price: number;
-  description: string;
-  buttonText: string;
-  benefitList: string[];
-}
-
-const plans: PlanProps[] = [
-  {
-    title: "Free",
-    popular: 0,
-    price: 0,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Start Free Trial",
-    benefitList: [
-      "1 team member",
-      "1 GB storage",
-      "Upto 2 pages",
-      "Community support",
-      "AI assistance",
-    ],
-  },
-  {
-    title: "Premium",
-    popular: 1,
-    price: 45,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Get starterd",
-    benefitList: [
-      "4 team member",
-      "8 GB storage",
-      "Upto 6 pages",
-      "Priority support",
-      "AI assistance",
-    ],
-  },
-  {
-    title: "Enterprise",
-    popular: 0,
-    price: 120,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Contact US",
-    benefitList: [
-      "10 team member",
-      "20 GB storage",
-      "Upto 10 pages",
-      "Phone & email support",
-      "AI assistance",
-    ],
-  },
+const features = [
+  "Unlimited reports — no per-client fees",
+  "Full white-label included as standard",
+  "API access included — never gated",
+  "No per-data-source charges",
+  "No seat restrictions",
+  "Uptime, PageSpeed, and SSL built in",
 ];
 
 export const PricingSection = () => {
   return (
-    <section className="container py-24 sm:py-32">
-      <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-        Pricing
+    <section id="pricing" className="container py-24 sm:py-32">
+      <h2 className="text-3xl md:text-4xl font-bold text-[#1E3A8A] text-center mb-16">
+        One price. No surprises.
       </h2>
 
-      <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-        Get unlimitted access
-      </h2>
+      <div className="max-w-lg mx-auto">
+        <div className="rounded-2xl border-2 border-[#1E3A8A] bg-card shadow-xl p-8">
+          {/* Price */}
+          <div className="mb-8">
+            <div className="flex items-end gap-2 mb-1">
+              <span className="text-5xl font-bold text-[#1E3A8A]">£99</span>
+              <span className="text-muted-foreground mb-2">/month</span>
+            </div>
+            <p className="text-muted-foreground text-sm">
+              or £890/year — save two months
+            </p>
+          </div>
 
-      <h3 className="md:w-1/2 mx-auto text-xl text-center text-muted-foreground pb-14">
-        Lorem ipsum dolor sit amet consectetur adipisicing reiciendis.
-      </h3>
+          {/* Features */}
+          <ul className="space-y-3 mb-8">
+            {features.map((feature) => (
+              <li key={feature} className="flex items-start gap-3">
+                <Check className="w-5 h-5 text-[#A3E635] mt-0.5 shrink-0" />
+                <span className="text-foreground">{feature}</span>
+              </li>
+            ))}
+          </ul>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-4">
-        {plans.map(
-          ({ title, popular, price, description, buttonText, benefitList }) => (
-            <Card
-              key={title}
-              className={
-                popular === PopularPlan?.YES
-                  ? "drop-shadow-xl shadow-black/10 dark:shadow-white/10 border-[1.5px] border-primary lg:scale-[1.1]"
-                  : ""
-              }
-            >
-              <CardHeader>
-                <CardTitle className="pb-2">{title}</CardTitle>
+          <Button
+            asChild
+            size="lg"
+            className="w-full bg-[#A3E635] text-[#1E3A8A] hover:bg-[#92d120] font-bold text-base"
+          >
+            <Link href="#founding-partner">Apply for Founding Partner Access</Link>
+          </Button>
+        </div>
 
-                <CardDescription className="pb-4">
-                  {description}
-                </CardDescription>
+        {/* Comparison */}
+        <div className="mt-6 rounded-xl border border-border bg-muted/50 p-5">
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            <span className="font-semibold text-foreground">
+              AgencyAnalytics charges £300+ per month
+            </span>{" "}
+            for 20 clients and still does not include native uptime monitoring.
+          </p>
+        </div>
 
-                <div>
-                  <span className="text-3xl font-bold">${price}</span>
-                  <span className="text-muted-foreground"> /month</span>
-                </div>
-              </CardHeader>
-
-              <CardContent className="flex">
-                <div className="space-y-4">
-                  {benefitList.map((benefit) => (
-                    <span key={benefit} className="flex">
-                      <Check className="text-primary mr-2" />
-                      <h3>{benefit}</h3>
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-
-              <CardFooter>
-                <Button
-                  variant={
-                    popular === PopularPlan?.YES ? "default" : "secondary"
-                  }
-                  className="w-full"
-                >
-                  {buttonText}
-                </Button>
-              </CardFooter>
-            </Card>
-          )
-        )}
+        <p className="text-center text-sm text-muted-foreground mt-4">
+          Cheaper than one hour of a junior developer&apos;s billable time.
+        </p>
       </div>
     </section>
   );

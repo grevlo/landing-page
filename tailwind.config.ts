@@ -55,6 +55,10 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Grevlo brand colours
+        navy: "#1E3A8A",
+        lime: "#A3E635",
+        slate: "#2F3E46",
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",

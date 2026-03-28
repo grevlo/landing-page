@@ -26,7 +26,7 @@ export const HowItWorksSection = () => {
         Three steps. One API call. One professional PDF.
       </h2>
 
-      <div className="grid md:grid-cols-3 gap-8 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
         {steps.map(({ number, title, description }) => (
           <div key={number} className="relative">
             <div className="text-5xl font-bold text-[#1E3A8A] mb-4 leading-none">

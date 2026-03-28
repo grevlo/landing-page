@@ -102,18 +102,18 @@ export const HeroSection = () => {
     <section className="container w-full">
       <div className="mx-auto py-20 md:py-32 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center lg:max-w-screen-xl">
         {/* Left: text */}
-        <div className="space-y-8">
+        <div className="space-y-8 text-center lg:text-left">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1E3A8A] leading-tight">
             Stop compiling monthly reports manually.
           </h1>
 
-          <p className="max-w-[600px] text-xl text-muted-foreground leading-relaxed">
+          <p className="max-w-[600px] mx-auto lg:mx-0 text-xl text-muted-foreground leading-relaxed">
             Grevlo is a headless API for web agencies. Give us your client&apos;s
             URL. Get back a fully branded white-label PDF performance report
             covering uptime, PageSpeed, and SSL. Automatically.
           </p>
 
-          <div className="flex flex-col items-start gap-4">
+          <div className="flex flex-col items-center lg:items-start gap-4">
             <Button
               asChild
               size="lg"

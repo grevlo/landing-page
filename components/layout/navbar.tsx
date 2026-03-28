@@ -12,7 +12,6 @@ import {
 import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import Image from "next/image";
 
 interface RouteProps {
   href: string;
@@ -25,20 +24,26 @@ const routeList: RouteProps[] = [
   { href: "#founding-partner", label: "Founding Partner" },
 ];
 
+const Wordmark = () => (
+  <span
+    style={{
+      fontFamily: "Geist, sans-serif",
+      fontWeight: 700,
+      fontSize: "20px",
+      color: "#1E3A8A",
+      letterSpacing: "-0.5px",
+    }}
+  >
+    GREVLO
+  </span>
+);
+
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <header className="shadow-inner bg-opacity-15 w-[90%] md:w-[70%] lg:w-[75%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center p-2 bg-card">
-      <Link href="/" className="flex items-center gap-2">
-        <Image
-          src="/grevlo-logo.png"
-          alt="Grevlo"
-          width={140}
-          height={36}
-          className="w-auto"
-          style={{ height: "36px" }}
-          priority
-        />
+      <Link href="/" className="flex items-center gap-2 px-2">
+        <Wordmark />
       </Link>
 
       {/* Mobile */}
@@ -58,14 +63,7 @@ export const Navbar = () => {
               <SheetHeader className="mb-4 ml-4">
                 <SheetTitle>
                   <Link href="/" onClick={() => setIsOpen(false)}>
-                    <Image
-                      src="/grevlo-logo.png"
-                      alt="Grevlo"
-                      width={140}
-                      height={36}
-                      className="w-auto"
-                      style={{ height: "36px" }}
-                    />
+                    <Wordmark />
                   </Link>
                 </SheetTitle>
               </SheetHeader>

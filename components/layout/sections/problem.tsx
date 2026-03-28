@@ -19,7 +19,7 @@ export const ProblemSection = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-[#1E3A8A] mb-8 leading-snug">
           Your retainer clients deserve better than a spreadsheet.
         </h2>
-        <div className="space-y-4 text-lg text-muted-foreground leading-relaxed mb-12">
+        <div className="space-y-4 text-lg text-[#2F3E46] leading-relaxed mb-12">
           <p>
             Web agencies spend 3 to 4 hours every month manually pulling uptime
             logs, running PageSpeed audits, and checking SSL certificates. The
@@ -36,15 +36,20 @@ export const ProblemSection = () => {
         {/* Two-column comparison */}
         <div className="grid md:grid-cols-2 gap-6">
           {/* The old way */}
-          <div className="rounded-xl border border-red-200 bg-red-50/50 p-6">
+          <div
+            className="rounded-xl bg-white p-6 border-t-[3px] border-t-red-500 border border-gray-100"
+            style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}
+          >
             <h3 className="font-semibold text-[#1E3A8A] mb-4 text-base">
               The old way
             </h3>
             <ul className="space-y-3">
               {oldWay.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="text-base leading-snug mt-0.5">❌</span>
-                  <span className="text-muted-foreground text-sm leading-relaxed">
+                  <span className="text-red-500 text-base leading-snug mt-0.5">
+                    ✕
+                  </span>
+                  <span className="text-[#2F3E46] text-sm leading-relaxed">
                     {item}
                   </span>
                 </li>
@@ -53,7 +58,10 @@ export const ProblemSection = () => {
           </div>
 
           {/* The Grevlo way */}
-          <div className="rounded-xl border border-green-200 bg-green-50/50 p-6">
+          <div
+            className="rounded-xl bg-white p-6 border-t-[3px] border-t-green-500 border border-gray-100"
+            style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}
+          >
             <h3 className="font-semibold text-[#1E3A8A] mb-4 text-base">
               The Grevlo way
             </h3>
@@ -63,7 +71,7 @@ export const ProblemSection = () => {
                   <span className="text-green-600 font-bold text-base leading-snug mt-0.5">
                     ✓
                   </span>
-                  <span className="text-muted-foreground text-sm leading-relaxed">
+                  <span className="text-[#2F3E46] text-sm leading-relaxed">
                     {item}
                   </span>
                 </li>

@@ -21,7 +21,7 @@ export const PricingSection = () => {
       <div className="max-w-lg mx-auto">
         <div
           className="rounded-2xl border-2 border-[#1E3A8A] bg-white p-8"
-          style={{ boxShadow: "0 4px 24px rgba(30,58,138,0.15)" }}
+          style={{ boxShadow: "0 8px 32px rgba(30,58,138,0.15)" }}
         >
           {/* Price */}
           <div className="mb-8">
@@ -47,14 +47,14 @@ export const PricingSection = () => {
           <Button
             asChild
             size="lg"
-            className="w-full bg-[#A3E635] text-[#1E3A8A] hover:bg-[#92d120] font-bold text-base"
+            className="w-full mt-6 bg-[#A3E635] text-[#1E3A8A] hover:bg-[#92d120] font-bold text-base"
           >
             <Link href="#founding-partner">Apply for Founding Partner Access</Link>
           </Button>
         </div>
 
         {/* Comparison callout */}
-        <div className="mt-6 rounded-r-xl border-l-4 border-l-[#1E3A8A] bg-[#EFF6FF] p-5">
+        <div className="my-8 rounded-r-xl border-l-4 border-l-[#1E3A8A] bg-[#EFF6FF] p-5">
           <p className="text-sm text-[#2F3E46] leading-relaxed">
             <span className="font-bold text-[#1E3A8A]">
               AgencyAnalytics charges £300+/month

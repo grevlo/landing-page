@@ -35,7 +35,7 @@ export const Navbar = () => {
           alt="Grevlo"
           width={120}
           height={32}
-          className="w-auto mix-blend-multiply"
+          className="w-auto brightness-0"
           style={{ height: "32px" }}
           priority
         />
@@ -63,7 +63,7 @@ export const Navbar = () => {
                       alt="Grevlo"
                       width={120}
                       height={32}
-                      className="w-auto mix-blend-multiply"
+                      className="w-auto brightness-0"
                       style={{ height: "32px" }}
                     />
                   </Link>

@@ -19,7 +19,10 @@ export const PricingSection = () => {
       </h2>
 
       <div className="max-w-lg mx-auto">
-        <div className="rounded-2xl border-2 border-[#1E3A8A] bg-card shadow-xl p-8">
+        <div
+          className="rounded-2xl border-2 border-[#1E3A8A] bg-white p-8"
+          style={{ boxShadow: "0 4px 24px rgba(30,58,138,0.15)" }}
+        >
           {/* Price */}
           <div className="mb-8">
             <div className="flex items-end gap-2 mb-1">
@@ -50,11 +53,11 @@ export const PricingSection = () => {
           </Button>
         </div>
 
-        {/* Comparison */}
-        <div className="mt-6 rounded-xl border border-border bg-muted/50 p-5">
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            <span className="font-semibold text-foreground">
-              AgencyAnalytics charges £300+ per month
+        {/* Comparison callout */}
+        <div className="mt-6 rounded-r-xl border-l-4 border-l-[#1E3A8A] bg-[#EFF6FF] p-5">
+          <p className="text-sm text-[#2F3E46] leading-relaxed">
+            <span className="font-bold text-[#1E3A8A]">
+              AgencyAnalytics charges £300+/month
             </span>{" "}
             for 20 clients and still does not include native uptime monitoring.
           </p>

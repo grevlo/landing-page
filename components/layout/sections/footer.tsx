@@ -5,17 +5,18 @@ import Link from "next/link";
 export const FooterSection = () => {
   return (
     <footer id="footer" className="container py-16 sm:py-20">
-      <div className="p-8 bg-card border border-secondary rounded-2xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div className="p-8 bg-card border-t-2 border-[#1E3A8A] border-x border-b border-secondary rounded-2xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 items-start">
           {/* Left: company info */}
           <div className="flex flex-col gap-3">
             <Link href="/">
               <Image
                 src="/grevlo-logo.png"
                 alt="Grevlo"
-                width={120}
-                height={36}
-                className="h-9 w-auto"
+                width={110}
+                height={28}
+                className="w-auto mix-blend-multiply"
+                style={{ height: "28px" }}
               />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">

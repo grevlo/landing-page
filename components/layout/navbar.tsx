@@ -34,8 +34,9 @@ export const Navbar = () => {
           src="/grevlo-logo.png"
           alt="Grevlo"
           width={120}
-          height={36}
-          className="h-9 w-auto"
+          height={32}
+          className="w-auto mix-blend-multiply"
+          style={{ height: "32px" }}
           priority
         />
       </Link>
@@ -61,8 +62,9 @@ export const Navbar = () => {
                       src="/grevlo-logo.png"
                       alt="Grevlo"
                       width={120}
-                      height={36}
-                      className="h-9 w-auto"
+                      height={32}
+                      className="w-auto mix-blend-multiply"
+                      style={{ height: "32px" }}
                     />
                   </Link>
                 </SheetTitle>

@@ -29,7 +29,7 @@ export const HowItWorksSection = () => {
       <div className="grid md:grid-cols-3 gap-8 mb-16">
         {steps.map(({ number, title, description }) => (
           <div key={number} className="relative">
-            <div className="text-5xl font-bold text-[#A3E635] mb-4 leading-none">
+            <div className="text-5xl font-bold text-[#1E3A8A] mb-4 leading-none">
               {number}
             </div>
             <h3 className="text-xl font-semibold text-[#1E3A8A] mb-3">

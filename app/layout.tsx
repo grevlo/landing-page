@@ -9,7 +9,22 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 export const metadata: Metadata = {
   title: "Grevlo — Automated White-Label PDF Reports for Web Agencies",
   description:
-    "Grevlo is a headless API for web agencies. Give us your client's URL. Get back a fully branded PDF performance report covering uptime, PageSpeed, and SSL. Automatically.",
+    "Grevlo is a headless API for web agencies. POST a URL, get back a fully branded white-label PDF performance report covering uptime, PageSpeed, and SSL. £99/month, no per-client fees.",
+  openGraph: {
+    title: "Grevlo — Automated White-Label PDF Reports for Web Agencies",
+    description:
+      "Grevlo is a headless API for web agencies. POST a URL, get back a fully branded white-label PDF performance report covering uptime, PageSpeed, and SSL. £99/month, no per-client fees.",
+    url: "https://grevlo.com",
+    siteName: "Grevlo",
+    locale: "en_GB",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Grevlo — Automated White-Label PDF Reports for Web Agencies",
+    description:
+      "Grevlo is a headless API for web agencies. POST a URL, get back a fully branded white-label PDF performance report covering uptime, PageSpeed, and SSL. £99/month, no per-client fees.",
+  },
 };
 
 export default function RootLayout({

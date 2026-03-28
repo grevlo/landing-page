@@ -22,6 +22,8 @@ export const FooterSection = () => {
               Grevlo Ltd
               <br />
               Oldham, Greater Manchester
+              <br />
+              Company No. 17121751
             </p>
           </div>
 

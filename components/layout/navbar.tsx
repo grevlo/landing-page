@@ -33,10 +33,10 @@ export const Navbar = () => {
         <Image
           src="/grevlo-logo.png"
           alt="Grevlo"
-          width={120}
-          height={32}
-          className="w-auto brightness-0"
-          style={{ height: "32px" }}
+          width={140}
+          height={36}
+          className="w-auto"
+          style={{ height: "36px" }}
           priority
         />
       </Link>
@@ -61,10 +61,10 @@ export const Navbar = () => {
                     <Image
                       src="/grevlo-logo.png"
                       alt="Grevlo"
-                      width={120}
-                      height={32}
-                      className="w-auto brightness-0"
-                      style={{ height: "32px" }}
+                      width={140}
+                      height={36}
+                      className="w-auto"
+                      style={{ height: "36px" }}
                     />
                   </Link>
                 </SheetTitle>

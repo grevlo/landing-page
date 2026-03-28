@@ -19,7 +19,7 @@ html {
     --popover-foreground: 224 64% 20%;
 
     /* Navy #1E3A8A */
-    --primary: 224 64% 33%;
+    --primary: 221 65% 36%;
     --primary-foreground: 0 0% 100%;
 
     /* Light slate border/secondary */
@@ -53,7 +53,7 @@ html {
     --popover: 224 64% 12%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 224 64% 33%;
+    --primary: 221 65% 36%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 224 40% 22%;

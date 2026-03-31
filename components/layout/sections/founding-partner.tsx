@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 // TODO: Replace TALLY_FORM_ID below with your actual Tally form ID.
 // Create your form at https://tally.so — takes ~5 minutes.
 // Your form ID is the short code in the form URL: tally.so/r/XXXXXX
-const TALLY_FORM_ID = "TALLY_FORM_ID";
+const TALLY_FORM_ID = "dWjbEz";
 
 const benefits = [
   "3 months free access — no card required",

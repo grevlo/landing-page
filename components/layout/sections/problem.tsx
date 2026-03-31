@@ -37,16 +37,16 @@ export const ProblemSection = () => {
         <div className="grid md:grid-cols-2 gap-6">
           {/* The old way */}
           <div
-            className="rounded-xl bg-white p-6 border-t-[3px] border-t-red-500 border border-gray-100"
+            className="rounded-xl bg-white p-6 border-t-[3px] border-t-[#EF4444] border border-gray-100"
             style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}
           >
-            <h3 className="font-semibold text-[#1E3A8A] mb-4 text-base">
+            <h3 className="font-semibold text-[#EF4444] mb-4 text-base">
               The old way
             </h3>
             <ul className="space-y-3">
               {oldWay.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="text-red-500 text-base leading-snug mt-0.5">
+                  <span className="text-[#EF4444] text-base leading-snug mt-0.5">
                     ✕
                   </span>
                   <span className="text-[#2F3E46] text-sm leading-relaxed">
@@ -59,8 +59,8 @@ export const ProblemSection = () => {
 
           {/* The Grevlo way */}
           <div
-            className="rounded-xl bg-white p-6 border-t-[3px] border-t-green-500 border border-gray-100"
-            style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}
+            className="rounded-xl bg-white p-6 border-t-[3px] border-t-[#1E3A8A] border border-gray-100"
+            style={{ boxShadow: "0 8px 24px rgba(30,58,138,0.12)" }}
           >
             <h3 className="font-semibold text-[#1E3A8A] mb-4 text-base">
               The Grevlo way
@@ -68,7 +68,7 @@ export const ProblemSection = () => {
             <ul className="space-y-3">
               {newWay.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="text-green-600 font-bold text-base leading-snug mt-0.5">
+                  <span className="text-[#A3E635] font-bold text-base leading-snug mt-0.5">
                     ✓
                   </span>
                   <span className="text-[#2F3E46] text-sm leading-relaxed">

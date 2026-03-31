@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const PdfMockup = () => (
-  <div className="relative hidden lg:flex items-center justify-center">
+  <div className="relative hidden md:flex items-center justify-center">
     <div
       className="w-full max-w-sm bg-white rounded-xl overflow-hidden border border-gray-100"
       style={{

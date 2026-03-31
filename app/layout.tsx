@@ -5,6 +5,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/layout/theme-provider";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Grevlo — Automated White-Label PDF Reports for Web Agencies",
@@ -49,6 +50,7 @@ export default function RootLayout({
           <Navbar />
           {children}
         </ThemeProvider>
+        <Script src="https://tally.so/widgets/embed.js" strategy="lazyOnload" />
       </body>
     </html>
   );

@@ -1,6 +1,9 @@
 import { Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+
+// TODO: Replace TALLY_FORM_ID below with your actual Tally form ID.
+// Create your form at https://tally.so — takes ~5 minutes.
+// Your form ID is the short code in the form URL: tally.so/r/XXXXXX
+const TALLY_FORM_ID = "TALLY_FORM_ID";
 
 const benefits = [
   "3 months free access — no card required",
@@ -42,24 +45,24 @@ export const FoundingPartnerSection = () => {
           </ul>
 
           <div className="flex flex-col items-center gap-3">
-            <Button
-              asChild
-              size="lg"
-              className="bg-[#A3E635] text-[#1E3A8A] hover:bg-[#92d120] font-bold text-base px-10 py-6"
+            <button
+              data-tally-open={TALLY_FORM_ID}
+              data-tally-layout="modal"
+              data-tally-emoji-text="👋"
+              data-tally-emoji-animation="wave"
+              className="bg-[#A3E635] text-[#1E3A8A] hover:bg-[#92d120] font-bold text-base px-10 py-4 rounded-md transition-colors cursor-pointer"
             >
-              <Link href="mailto:dom@grevlo.com">
-                Apply for a Founding Partner Spot
-              </Link>
-            </Button>
+              Apply for a Founding Partner Spot
+            </button>
             <p className="text-sm text-white/60">
-              Email{" "}
-              <Link
+              Or email{" "}
+              <a
                 href="mailto:dom@grevlo.com"
                 className="text-white/80 underline hover:text-white transition-colors"
               >
                 dom@grevlo.com
-              </Link>{" "}
-              to apply. 3 of 5 spots remaining.
+              </a>{" "}
+              directly. 3 of 5 spots remaining.
             </p>
           </div>
         </div>

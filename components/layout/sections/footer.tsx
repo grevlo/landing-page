@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export const FooterSection = () => {
@@ -8,18 +9,13 @@ export const FooterSection = () => {
 
           {/* Left column */}
           <div>
-            <span
-              className="block mb-3"
-              style={{
-                fontFamily: "Geist, sans-serif",
-                fontWeight: 700,
-                fontSize: "16px",
-                color: "#1E3A8A",
-                letterSpacing: "-0.5px",
-              }}
-            >
-              GREVLO
-            </span>
+            <Image
+              src="/logo-horizontal.svg"
+              alt="Grevlo"
+              width={120}
+              height={36}
+              className="mb-3"
+            />
             <p className="text-sm text-gray-600">
               Grevlo Ltd
               <br />

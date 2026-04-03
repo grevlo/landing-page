@@ -36,6 +36,10 @@ export const Navbar = () => {
           width={160}
           height={48}
           priority
+          style={{
+            filter:
+              "brightness(0) saturate(100%) invert(19%) sepia(45%) saturate(1200%) hue-rotate(200deg) brightness(95%) contrast(95%)",
+          }}
         />
       </Link>
 
@@ -61,6 +65,10 @@ export const Navbar = () => {
                       alt="Grevlo"
                       width={160}
                       height={48}
+                      style={{
+                        filter:
+                          "brightness(0) saturate(100%) invert(19%) sepia(45%) saturate(1200%) hue-rotate(200deg) brightness(95%) contrast(95%)",
+                      }}
                     />
                   </Link>
                 </SheetTitle>

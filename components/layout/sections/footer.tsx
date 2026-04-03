@@ -15,6 +15,7 @@ export const FooterSection = () => {
               width={120}
               height={36}
               className="mb-3"
+              style={{ filter: "brightness(0) invert(1)" }}
             />
             <p className="text-sm text-gray-600">
               Grevlo Ltd

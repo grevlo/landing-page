@@ -16,10 +16,12 @@ import Link from "next/link";
 interface RouteProps {
   href: string;
   label: string;
+  external?: boolean;
 }
 
 const routeList: RouteProps[] = [
   { href: "#how-it-works", label: "How It Works" },
+  { href: "https://api.grevlo.com/docs", label: "Docs", external: true },
   { href: "#pricing", label: "Pricing" },
   { href: "#founding-partner", label: "Founding Partner" },
 ];
@@ -64,7 +66,7 @@ export const Navbar = () => {
                 </SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-2">
-                {routeList.map(({ href, label }) => (
+                {routeList.map(({ href, label, external }) => (
                   <Button
                     key={href}
                     onClick={() => setIsOpen(false)}
@@ -72,7 +74,7 @@ export const Navbar = () => {
                     variant="ghost"
                     className="justify-start text-base"
                   >
-                    <Link href={href}>{label}</Link>
+                    <Link href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{label}</Link>
                   </Button>
                 ))}
               </div>
@@ -94,11 +96,12 @@ export const Navbar = () => {
 
       {/* Desktop */}
       <nav className="hidden lg:flex items-center gap-6 mx-auto">
-        {routeList.map(({ href, label }) => (
+        {routeList.map(({ href, label, external }) => (
           <Link
             key={href}
             href={href}
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
           >
             {label}
           </Link>

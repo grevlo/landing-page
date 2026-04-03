@@ -18,6 +18,49 @@ export const PricingSection = () => {
         One price. No surprises.
       </h2>
 
+      {/* Competitor comparison table */}
+      <div className="max-w-3xl mx-auto mb-16 overflow-x-auto">
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b-2 border-[#1E3A8A]">
+              <th className="text-left py-3 px-4 font-semibold text-[#1E3A8A]">Platform</th>
+              <th className="text-left py-3 px-4 font-semibold text-[#1E3A8A]">Monthly Cost (25 clients)</th>
+              <th className="text-left py-3 px-4 font-semibold text-[#1E3A8A]">Native Uptime / SSL</th>
+              <th className="text-left py-3 px-4 font-semibold text-[#1E3A8A]">Architecture</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="border-b border-gray-100">
+              <td className="py-3 px-4 text-[#2F3E46]">AgencyAnalytics</td>
+              <td className="py-3 px-4 text-[#2F3E46]">~$749/month</td>
+              <td className="py-3 px-4 text-[#2F3E46]">No</td>
+              <td className="py-3 px-4 text-[#2F3E46]">Dashboard</td>
+            </tr>
+            <tr className="border-b border-gray-100">
+              <td className="py-3 px-4 text-[#2F3E46]">Swydo</td>
+              <td className="py-3 px-4 text-[#2F3E46]">~$474/month</td>
+              <td className="py-3 px-4 text-[#2F3E46]">No</td>
+              <td className="py-3 px-4 text-[#2F3E46]">Dashboard</td>
+            </tr>
+            <tr className="border-b border-gray-100">
+              <td className="py-3 px-4 text-[#2F3E46]">DashThis</td>
+              <td className="py-3 px-4 text-[#2F3E46]">~$309/month</td>
+              <td className="py-3 px-4 text-[#2F3E46]">No</td>
+              <td className="py-3 px-4 text-[#2F3E46]">Dashboard</td>
+            </tr>
+            <tr className="bg-[#1E3A8A]">
+              <td className="py-3 px-4 text-white font-semibold">Grevlo</td>
+              <td className="py-3 px-4 text-white font-semibold">£99/month</td>
+              <td className="py-3 px-4 text-[#A3E635] font-semibold">Yes</td>
+              <td className="py-3 px-4 text-white font-semibold">Headless API</td>
+            </tr>
+          </tbody>
+        </table>
+        <p className="text-xs text-muted-foreground mt-3 text-right">
+          Competitor pricing based on publicly available information, April 2026.
+        </p>
+      </div>
+
       <div className="max-w-lg mx-auto">
         <div
           className="rounded-2xl border-2 border-[#1E3A8A] bg-white p-8"

@@ -33,6 +33,13 @@ export const ProblemSection = () => {
           </p>
         </div>
 
+        {/* Pull quote */}
+        <blockquote className="border-l-4 border-[#A3E635] pl-6 mb-12">
+          <p className="text-xl md:text-2xl font-semibold text-[#1E3A8A] leading-snug">
+            Legacy reporting tools charge per client. Every agency win costs you more in software fees. That&apos;s a variable tax on your growth.
+          </p>
+        </blockquote>
+
         {/* Two-column comparison */}
         <div className="grid md:grid-cols-2 gap-6">
           {/* The old way */}

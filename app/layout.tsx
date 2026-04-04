@@ -8,11 +8,6 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  icons: {
-    icon: [{ url: "/favicon-32.png", sizes: "32x32", type: "image/png" }],
-    shortcut: "/favicon-32.png",
-    apple: "/apple-touch-icon.png",
-  },
   title: "Grevlo — Automated White-Label PDF Reports for Web Agencies",
   description:
     "Grevlo is a headless API for web agencies. POST a URL, get back a fully branded white-label PDF performance report covering uptime, PageSpeed, and SSL. £99/month, no per-client fees.",

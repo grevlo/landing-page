@@ -1,16 +1,19 @@
 import sharp from 'sharp';
-import { readFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 
 const svg = readFileSync('./public/logo-icon.svg');
 
-await sharp(svg)
+const size32 = await sharp(svg)
   .resize(32, 32)
   .png()
-  .toFile('./public/favicon-32.png');
+  .toBuffer();
+
+writeFileSync('./app/favicon.ico', size32);
+writeFileSync('./public/favicon.ico', size32);
 
 await sharp(svg)
   .resize(180, 180)
   .png()
   .toFile('./public/apple-touch-icon.png');
 
-console.log('Favicons generated');
+console.log('Done');

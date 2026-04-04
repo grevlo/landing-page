@@ -44,7 +44,7 @@ export const PricingSection = () => {
             </tr>
             <tr className="border-b border-gray-100">
               <td className="py-3 px-4 text-[#2F3E46]">DashThis</td>
-              <td className="py-3 px-4 text-[#2F3E46]">~$309/month</td>
+              <td className="py-3 px-4 text-[#2F3E46]">Variable</td>
               <td className="py-3 px-4 text-[#2F3E46]">No</td>
               <td className="py-3 px-4 text-[#2F3E46]">Dashboard</td>
             </tr>
@@ -57,7 +57,7 @@ export const PricingSection = () => {
           </tbody>
         </table>
         <p className="text-xs text-muted-foreground mt-3 text-right">
-          Competitor pricing based on publicly available information, April 2026.
+          Competitor pricing estimated based on publicly available information, April 2026. Actual costs vary by usage. All competitor prices shown in USD.
         </p>
       </div>
 

@@ -9,7 +9,9 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   icons: {
-    icon: [{ url: "/logo-icon.svg", type: "image/svg+xml" }],
+    icon: "/logo-icon.svg",
+    shortcut: "/logo-icon.svg",
+    apple: "/logo-icon.svg",
   },
   title: "Grevlo — Automated White-Label PDF Reports for Web Agencies",
   description:

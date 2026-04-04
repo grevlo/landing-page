@@ -56,7 +56,7 @@ export const PricingSection = () => {
             </tr>
           </tbody>
         </table>
-        <p className="text-xs text-muted-foreground mt-3 text-right">
+        <p className="text-xs text-muted-foreground mt-3 text-center max-w-xl mx-auto">
           Competitor pricing estimated based on publicly available information, April 2026. Actual costs vary by usage. All competitor prices shown in USD.
         </p>
       </div>

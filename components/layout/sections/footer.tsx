@@ -20,7 +20,7 @@ export const FooterSection = () => {
             <p className="text-sm text-gray-600">
               Grevlo Ltd
               <br />
-              Oldham, Greater Manchester
+              Saddleworth, Greater Manchester
               <br />
               Company No. 17121751
             </p>

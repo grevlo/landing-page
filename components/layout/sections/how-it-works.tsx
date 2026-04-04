@@ -82,7 +82,7 @@ export const HowItWorksSection = async () => {
           />
         </div>
         <p className="text-center text-sm text-muted-foreground mt-4">
-          Returns a branded PDF in milliseconds.
+          Returns a branded PDF automatically.
         </p>
         <p className="text-center text-xs text-muted-foreground/70 mt-2 italic">
           API currently in private beta — endpoint provided on founding partner onboarding.

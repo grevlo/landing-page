@@ -87,6 +87,18 @@ export const HowItWorksSection = async () => {
         <p className="text-center text-xs text-muted-foreground/70 mt-2 italic">
           API currently in private beta — endpoint provided on founding partner onboarding.
         </p>
+        <p className="text-center text-xs text-muted-foreground/60 mt-2">
+          <code className="font-mono">brandingId</code> is created once via{" "}
+          <code className="font-mono">POST /v1/branding</code> with your agency logo and colours. Full docs at{" "}
+          <a
+            href="https://api.grevlo.com/docs"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-[#1E3A8A] transition-colors"
+          >
+            api.grevlo.com/docs
+          </a>
+        </p>
       </div>
     </section>
   );

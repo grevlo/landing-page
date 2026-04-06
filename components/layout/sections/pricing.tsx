@@ -18,44 +18,77 @@ export const PricingSection = () => {
         One price. No surprises.
       </h2>
 
-      {/* Competitor comparison table */}
-      <div className="max-w-3xl mx-auto mb-16 overflow-x-auto">
-        <table className="w-full text-sm border-collapse">
-          <thead>
-            <tr className="border-b-2 border-[#1E3A8A]">
-              <th className="text-left py-3 px-4 font-semibold text-[#1E3A8A]">Platform</th>
-              <th className="text-left py-3 px-4 font-semibold text-[#1E3A8A]">Monthly Cost (25 clients)</th>
-              <th className="text-left py-3 px-4 font-semibold text-[#1E3A8A]">Native Uptime / SSL</th>
-              <th className="text-left py-3 px-4 font-semibold text-[#1E3A8A]">Architecture</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-gray-100">
-              <td className="py-3 px-4 text-[#2F3E46]">AgencyAnalytics</td>
-              <td className="py-3 px-4 text-[#2F3E46]">~$749/month</td>
-              <td className="py-3 px-4 text-[#2F3E46]">No</td>
-              <td className="py-3 px-4 text-[#2F3E46]">Dashboard</td>
-            </tr>
-            <tr className="border-b border-gray-100">
-              <td className="py-3 px-4 text-[#2F3E46]">Swydo</td>
-              <td className="py-3 px-4 text-[#2F3E46]">~$474/month</td>
-              <td className="py-3 px-4 text-[#2F3E46]">No</td>
-              <td className="py-3 px-4 text-[#2F3E46]">Dashboard</td>
-            </tr>
-            <tr className="border-b border-gray-100">
-              <td className="py-3 px-4 text-[#2F3E46]">DashThis</td>
-              <td className="py-3 px-4 text-[#2F3E46]">Variable</td>
-              <td className="py-3 px-4 text-[#2F3E46]">No</td>
-              <td className="py-3 px-4 text-[#2F3E46]">Dashboard</td>
-            </tr>
-            <tr className="bg-[#1E3A8A]">
-              <td className="py-3 px-4 text-white font-semibold">Grevlo</td>
-              <td className="py-3 px-4 text-white font-semibold">£99/month</td>
-              <td className="py-3 px-4 text-[#A3E635] font-semibold">Yes</td>
-              <td className="py-3 px-4 text-white font-semibold">Headless API</td>
-            </tr>
-          </tbody>
-        </table>
+      {/* Competitor comparison — table on desktop, cards on mobile */}
+      <div className="max-w-3xl mx-auto mb-16">
+
+        {/* Desktop table (sm and up) */}
+        <div className="hidden sm:block overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b-2 border-[#1E3A8A]">
+                <th className="text-left py-3 px-4 font-semibold text-[#1E3A8A]">Platform</th>
+                <th className="text-left py-3 px-4 font-semibold text-[#1E3A8A]">Monthly Cost (25 clients)</th>
+                <th className="text-left py-3 px-4 font-semibold text-[#1E3A8A]">Native Uptime / SSL</th>
+                <th className="text-left py-3 px-4 font-semibold text-[#1E3A8A]">Architecture</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-gray-100">
+                <td className="py-3 px-4 text-[#2F3E46]">AgencyAnalytics</td>
+                <td className="py-3 px-4 text-[#2F3E46]">~$749/month</td>
+                <td className="py-3 px-4 text-[#2F3E46]">No</td>
+                <td className="py-3 px-4 text-[#2F3E46]">Dashboard</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-3 px-4 text-[#2F3E46]">Swydo</td>
+                <td className="py-3 px-4 text-[#2F3E46]">~$474/month</td>
+                <td className="py-3 px-4 text-[#2F3E46]">No</td>
+                <td className="py-3 px-4 text-[#2F3E46]">Dashboard</td>
+              </tr>
+              <tr className="border-b border-gray-100">
+                <td className="py-3 px-4 text-[#2F3E46]">DashThis</td>
+                <td className="py-3 px-4 text-[#2F3E46]">Variable</td>
+                <td className="py-3 px-4 text-[#2F3E46]">No</td>
+                <td className="py-3 px-4 text-[#2F3E46]">Dashboard</td>
+              </tr>
+              <tr className="bg-[#1E3A8A]">
+                <td className="py-3 px-4 text-white font-semibold">Grevlo</td>
+                <td className="py-3 px-4 text-white font-semibold">£99/month</td>
+                <td className="py-3 px-4 text-[#A3E635] font-semibold">Yes</td>
+                <td className="py-3 px-4 text-white font-semibold">Headless API</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* Mobile cards (below sm) */}
+        <div className="flex flex-col gap-3 sm:hidden">
+          {[
+            { name: "AgencyAnalytics", cost: "~$749/month", uptime: "No", arch: "Dashboard", grevlo: false },
+            { name: "Swydo",           cost: "~$474/month", uptime: "No", arch: "Dashboard", grevlo: false },
+            { name: "DashThis",        cost: "Variable",    uptime: "No", arch: "Dashboard", grevlo: false },
+            { name: "Grevlo",          cost: "£99/month",   uptime: "Yes", arch: "Headless API", grevlo: true },
+          ].map((row) => (
+            <div
+              key={row.name}
+              className={`rounded-xl p-4 border ${row.grevlo ? "bg-[#1E3A8A] border-[#1E3A8A]" : "bg-white border-gray-100"}`}
+              style={row.grevlo ? {} : { boxShadow: "0 1px 6px rgba(0,0,0,0.06)" }}
+            >
+              <p className={`text-base font-bold mb-2 ${row.grevlo ? "text-white" : "text-[#1E3A8A]"}`}>
+                {row.name}
+              </p>
+              <div className={`text-sm space-y-1 ${row.grevlo ? "text-white/90" : "text-[#2F3E46]"}`}>
+                <p><span className="font-medium">Cost:</span> {row.cost}</p>
+                <p>
+                  <span className="font-medium">Native Uptime / SSL:</span>{" "}
+                  <span className={row.grevlo ? "text-[#A3E635] font-semibold" : ""}>{row.uptime}</span>
+                </p>
+                <p><span className="font-medium">Architecture:</span> {row.arch}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
         <p className="text-xs text-muted-foreground mt-3 text-center max-w-xl mx-auto">
           Competitor pricing estimated based on publicly available information, April 2026. Actual costs vary by usage. All competitor prices shown in USD.
         </p>

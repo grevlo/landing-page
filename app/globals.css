@@ -90,3 +90,31 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prose table th {
+  background-color: #1E3A8A;
+  color: white;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.prose table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.prose table tr:nth-child(even) {
+  background-color: #F9FAFB;
+}
+
+.prose table tr:last-child td {
+  background-color: #1E3A8A;
+  color: white;
+  font-weight: 600;
+}

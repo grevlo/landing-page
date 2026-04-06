@@ -22,6 +22,7 @@ interface RouteProps {
 const routeList: RouteProps[] = [
   { href: "#how-it-works", label: "How It Works" },
   { href: "https://api.grevlo.com/docs", label: "Docs", external: true },
+  { href: "/blog", label: "Blog" },
   { href: "#pricing", label: "Pricing" },
   { href: "#founding-partner", label: "Founding Partner" },
 ];

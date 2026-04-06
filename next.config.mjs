@@ -1,21 +1,22 @@
+import createMDX from '@next/mdx'
+
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+})
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "i.pravatar.cc",
-      },
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-      {
-        protocol: "https",
-        hostname: "github.com",
-      },
+      { protocol: "https", hostname: "i.pravatar.cc" },
+      { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "github.com" },
     ],
   },
-};
+}
 
-export default nextConfig;
+export default withMDX(nextConfig)

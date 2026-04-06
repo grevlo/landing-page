@@ -1,0 +1,109 @@
+---
+title: "AgencyAnalytics vs DashThis vs Swydo: The Real Cost for UK Agencies in 2026 (And Why We Built Something Different)"
+description: "A direct comparison of the three dominant agency reporting platforms — their pricing models, limitations, and the hidden costs most agencies don't calculate."
+date: "2026-04-07"
+author: "Dom Howarth"
+keywords:
+  - "AgencyAnalytics alternatives UK"
+  - "DashThis alternatives for agencies"
+  - "Swydo alternatives"
+  - "agency reporting tools UK"
+  - "white label reporting API"
+---
+
+Every web agency managing retainer clients hits the same moment eventually.
+
+You win a new client. Good news. You update your reporting tool. Bad news — your monthly software bill just went up again. Another client, another increment on the pricing tier. At some point you realise that your reporting platform is effectively taxing your own growth. Every agency you successfully acquire costs you more to manage.
+
+This is not a minor inconvenience. It's a structural problem with how the dominant reporting platforms are priced, and it compounds as your agency scales.
+
+I built Grevlo because I got tired of watching this happen. Before getting into what Grevlo does, though, it's worth being honest about what the existing tools actually offer — because they're not without merit.
+
+## AgencyAnalytics
+
+AgencyAnalytics is the market leader for a reason. The dashboards are genuinely clean, the integrations are broad (80+ platforms), and the white-labelling is solid. For an agency that primarily manages Google Ads and Meta campaigns, it does the job well.
+
+The problem is the pricing model.
+
+AgencyAnalytics charges per client. The entry-level Freelancer plan covers 5 clients at around $79/month. But once you scale beyond that, you're looking at the Agency tier — and for a realistic agency managing 25 retainer clients, you're spending approximately **$749/month**.
+
+That's before you factor in API access being locked behind the most expensive tier, the occasional data connector outages that users flag repeatedly on review platforms, and the fact that it does not natively monitor uptime or SSL certificate status. You need a separate tool for that.
+
+**Honest summary:** Good product, well-designed, works for marketing-focused agencies. The pricing model punishes growth and the lack of native infrastructure monitoring means you're still paying for UptimeRobot or Pingdom on top.
+
+## DashThis
+
+DashThis takes a different approach. Until March 2026 it charged per dashboard rather than per client, which gave it more predictable costs for agencies with complex clients. The interface is fast, the templates are solid, and it has loyal users who have been on the platform for years.
+
+In March 2026, DashThis changed its pricing model to source-based — meaning costs now reflect both the number of dashboards and the data sources you connect. For agencies managing multiple clients across multiple channels, this change significantly altered the cost calculation.
+
+The fundamental limitation of DashThis has always been the same as AgencyAnalytics: it is a marketing data visualisation tool. It pulls from Google Analytics, Meta Ads, Google Ads. It does not monitor whether your client's site is actually up. It does not check SSL certificate expiry. For web agencies managing hosting and technical health alongside marketing performance, you are assembling a reporting picture from multiple tools.
+
+**Honest summary:** Well-executed dashboard tool for marketing data. Pricing model changed in 2026 making costs harder to predict. Still no native web infrastructure monitoring.
+
+## Swydo
+
+Swydo is the most technically honest of the three in terms of what it is and what it costs. It charges per data source — $69/month base including 10 data sources, with additional sources at $4.50 each for sources 11–100. For a focused agency with a limited number of integrations per client, this is genuinely cost-effective.
+
+The problem surfaces when you manage real-world agencies with multiple channels per client. A single client using Google Analytics, Google Ads, Facebook Ads, Instagram and LinkedIn counts as 5 data sources. With 20 clients at that profile, you are at 100+ sources — which at 2026 rates puts you around **$474/month** and climbing.
+
+Like the others, Swydo is a marketing reporting tool. No native uptime monitoring. No SSL checking. No headless API for programmatic integration.
+
+**Honest summary:** Best pricing model for agencies with simple, focused integrations. Costs become unpredictable quickly as you scale or add channels. No API for automation.
+
+## The Actual Numbers
+
+| Platform | Monthly Cost (25 clients) | Native Uptime / SSL | Architecture |
+|---|---|---|---|
+| AgencyAnalytics | ~$749/month | No | Dashboard |
+| Swydo | ~$474/month | No | Dashboard |
+| DashThis | Variable (source-based, 2026) | No | Dashboard |
+| **Grevlo** | **£99/month** | **Yes** | **Headless API** |
+
+*Competitor pricing estimated based on publicly available information, April 2026. Actual costs vary by usage. Competitor prices shown in USD.*
+
+## Why Static Pricing Matters
+
+The common thread across all three platforms is that their costs scale with your success. More clients means more cost. More integrations means more cost. The software becomes a variable operating expense that grows proportionally with your revenue.
+
+This is fine when you're small. It becomes a problem when you're trying to grow.
+
+At 10 clients, $474/month for Swydo is probably justifiable. At 30 clients, you're over $700/month and still paying separately for uptime monitoring. At 50 clients, you're well over $1,000/month in reporting infrastructure alone.
+
+There's also the hidden cost nobody talks about: the non-billable hours spent manually assembling these reports. Even with the best dashboard tools, agency staff spend time logging in, checking connections, exporting data and compiling documents. Industry analysis puts this at 10–15 hours per week for agencies managing moderate client portfolios. At a conservative £80/hour billable rate, that's £800 to £1,200 per week in opportunity cost — every week, every month.
+
+The software subscription is the visible cost. The labour is the invisible one.
+
+## What We Built Instead
+
+Grevlo doesn't replace AgencyAnalytics or DashThis for agencies that primarily need to report on marketing campaign performance. If your retainer clients are paying for SEO, PPC or social media management, those tools give you the integrations you need.
+
+Grevlo is built for a different use case: web agencies managing hosting, technical performance and monthly site health reporting for retainer clients.
+
+The product is a headless REST API. You send a client URL. We return a fully branded, white-label PDF report covering:
+
+- **Uptime** — 30-day availability log from UptimeRobot integration
+- **PageSpeed** — Core Web Vitals, mobile and desktop, from a live Lighthouse audit
+- **SSL** — Certificate validity, expiry date, issuer
+
+Your agency's branding is set up once. Every subsequent report requires a single API call. The PDF lands with your logo, your colours, your contact details. There is no Grevlo branding on the output.
+
+The pricing is £99/month flat. No per-client fees. No per-source charges. Whether you have 3 retainer clients or 50, the cost is the same.
+
+It's designed to be dropped into an existing workflow — a monthly cron job, a script in your project management system, a trigger in your internal tooling. The API documentation is at [api.grevlo.com/docs](https://api.grevlo.com/docs) if you want to evaluate it technically before doing anything else.
+
+## Is Grevlo Right For You?
+
+Honestly, it depends on what you're reporting on.
+
+If your monthly retainer work is primarily marketing — ads, SEO, social — you need one of the tools above. They have the integrations for that data and Grevlo doesn't try to replace them.
+
+If your retainer work includes managing client websites, hosting, technical performance and you're currently pulling together uptime logs, PageSpeed scores and SSL status manually each month — Grevlo is built for exactly that.
+
+We're currently running a founding partner programme for UK agencies. Five spots, three months free, in exchange for honest feedback and a backlink. If you continue after the trial, the rate is permanently locked at £99/month regardless of future price changes.
+
+[Apply at grevlo.com](https://grevlo.com)
+
+---
+
+*Dom Howarth is the founder of Grevlo Ltd, a headless reporting API for UK web agencies. Built in Saddleworth, Greater Manchester. Company No. 17121751.*

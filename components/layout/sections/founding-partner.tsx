@@ -55,14 +55,7 @@ export const FoundingPartnerSection = () => {
               Apply for a Founding Partner Spot
             </button>
             <p className="text-sm text-white/60">
-              Or email{" "}
-              <a
-                href="mailto:dom@grevlo.com"
-                className="text-white/80 underline hover:text-white transition-colors"
-              >
-                dom@grevlo.com
-              </a>{" "}
-              directly. 3 of 5 spots remaining.
+              3 of 5 spots remaining.
             </p>
           </div>
         </div>

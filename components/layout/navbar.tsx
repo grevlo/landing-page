@@ -20,11 +20,11 @@ interface RouteProps {
 }
 
 const routeList: RouteProps[] = [
-  { href: "#how-it-works", label: "How It Works" },
+  { href: "/#how-it-works", label: "How It Works" },
   { href: "https://api.grevlo.com/docs", label: "Docs", external: true },
   { href: "/blog", label: "Blog" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#founding-partner", label: "Founding Partner" },
+  { href: "/#pricing", label: "Pricing" },
+  { href: "/#founding-partner", label: "Founding Partner" },
 ];
 
 export const Navbar = () => {
@@ -86,7 +86,7 @@ export const Navbar = () => {
                 asChild
                 className="w-full bg-[#A3E635] text-[#1E3A8A] hover:bg-[#92d120] font-semibold"
               >
-                <Link href="#founding-partner" onClick={() => setIsOpen(false)}>
+                <Link href="/#founding-partner" onClick={() => setIsOpen(false)}>
                   Apply for Access
                 </Link>
               </Button>
@@ -115,7 +115,7 @@ export const Navbar = () => {
           size="sm"
           className="bg-[#A3E635] text-[#1E3A8A] hover:bg-[#92d120] font-semibold"
         >
-          <Link href="#founding-partner">Apply for Access</Link>
+          <Link href="/#founding-partner">Apply for Access</Link>
         </Button>
       </div>
     </header>

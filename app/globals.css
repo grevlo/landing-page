@@ -113,8 +113,9 @@ html {
   background-color: #F9FAFB;
 }
 
-.prose table tr:last-child td {
+.prose table tr:last-child td,
+.prose table tr:last-child td * {
   background-color: #2F3E46;
-  color: white !important;
+  color: #ffffff !important;
   font-weight: 600;
 }

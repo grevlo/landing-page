@@ -115,6 +115,6 @@ html {
 
 .prose table tr:last-child td {
   background-color: #2F3E46;
-  color: white;
+  color: white !important;
   font-weight: 600;
 }

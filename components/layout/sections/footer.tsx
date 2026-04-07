@@ -4,15 +4,15 @@ export const FooterSection = () => {
   return (
     <footer className="border-t border-gray-200 py-12">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start text-center md:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
 
           {/* Left column — identity */}
-          <div className="flex flex-col items-center md:items-start">
+          <div className="flex flex-col items-start">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logo-horizontal.png"
               alt="Grevlo"
-              style={{ height: "28px", width: "auto", marginBottom: "12px" }}
+              style={{ height: "28px", width: "auto", marginBottom: "16px" }}
             />
             <p className="text-sm text-gray-600 leading-relaxed">
               Grevlo Ltd
@@ -23,58 +23,81 @@ export const FooterSection = () => {
             </p>
           </div>
 
-          {/* Centre column — links */}
-          <div className="flex flex-col items-center gap-1">
-            <Link
-              href="mailto:dom@grevlo.com"
-              className="text-sm text-gray-600 hover:text-[#1E3A8A] transition-colors"
-            >
-              dom@grevlo.com
-            </Link>
-            <Link
-              href="https://grevlo.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-gray-600 hover:text-[#1E3A8A] transition-colors"
-            >
-              grevlo.com
-            </Link>
-            <Link
-              href="https://api.grevlo.com/docs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-gray-600 hover:text-[#1E3A8A] transition-colors"
-            >
-              api.grevlo.com/docs
-            </Link>
-          </div>
+          {/* Right column — nav + contact */}
+          <div className="grid grid-cols-2 gap-8">
 
-          {/* Right column — tagline + affiliate */}
-          <div className="flex flex-col items-center md:items-end gap-3">
-            <p className="text-sm text-gray-500 italic md:text-right">
-              Built for web agencies who&apos;d rather write a script than fill
-              in a form.
-            </p>
-            <p className="text-xs text-gray-400 md:text-right leading-relaxed">
-              We recommend{" "}
-              <Link
-                href="https://uptimerobot.com/?red=grevlo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-[#1E3A8A] transition-colors"
-              >
-                UptimeRobot
-              </Link>{" "}
-              for uptime monitoring. Affiliate link — we earn a small commission
-              at no cost to you.
-            </p>
-          </div>
+            {/* Nav links */}
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+                Navigation
+              </p>
+              <ul className="flex flex-col gap-2">
+                <li>
+                  <Link href="/#how-it-works" className="text-sm text-gray-600 hover:text-[#1E3A8A] transition-colors">
+                    How It Works
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#pricing" className="text-sm text-gray-600 hover:text-[#1E3A8A] transition-colors">
+                    Pricing
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="text-sm text-gray-600 hover:text-[#1E3A8A] transition-colors">
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://api.grevlo.com/docs" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-[#1E3A8A] transition-colors">
+                    API Docs
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#founding-partner" className="text-sm text-[#1E3A8A] font-medium hover:underline transition-colors">
+                    Apply for Access
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
+            {/* Contact */}
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+                Contact
+              </p>
+              <ul className="flex flex-col gap-2">
+                <li>
+                  <Link href="mailto:dom@grevlo.com" className="text-sm text-gray-600 hover:text-[#1E3A8A] transition-colors">
+                    dom@grevlo.com
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://grevlo.com" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-[#1E3A8A] transition-colors">
+                    grevlo.com
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+          </div>
         </div>
 
-        <div className="border-t border-gray-100 mt-8 pt-6 text-center">
+        {/* Bottom bar */}
+        <div className="border-t border-gray-100 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-xs text-gray-400">
             © 2026 Grevlo Ltd. All rights reserved.
+          </p>
+          <p className="text-xs text-gray-400 text-center md:text-right">
+            We recommend{" "}
+            <Link
+              href="https://uptimerobot.com/?red=grevlo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-[#1E3A8A] transition-colors"
+            >
+              UptimeRobot
+            </Link>{" "}
+            for uptime monitoring — affiliate link, no extra cost to you.
           </p>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { getPostBySlug, getAllPosts } from '@/lib/blog'
 import { MDXRemote } from 'next-mdx-remote/rsc'
+import remarkGfm from 'remark-gfm'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
@@ -81,7 +82,7 @@ export default function BlogPost({ params }: Props) {
           </p>
         </header>
         <div className="prose prose-lg max-w-none prose-headings:text-[#1E3A8A] prose-a:text-[#1E3A8A]">
-          <MDXRemote source={post.content} />
+          <MDXRemote source={post.content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
         </div>
       </article>
       <footer className="mt-16 pt-8 border-t border-gray-200">

@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { DemoForm } from "@/components/demo-form";
 
 const PdfMockup = () => (
   <div className="relative hidden md:flex items-center justify-center">
@@ -113,20 +112,11 @@ export const HeroSection = () => {
             covering uptime, PageSpeed, and SSL. Automatically.
           </p>
 
-          <div className="flex flex-col items-center lg:items-start gap-4">
-            <Button
-              asChild
-              size="lg"
-              className="bg-[#A3E635] text-[#1E3A8A] hover:bg-[#92d120] font-bold text-base px-8 py-6"
-            >
-              <Link href="#founding-partner">
-                Apply for Founding Partner Access
-              </Link>
-            </Button>
-            <p className="text-sm text-muted-foreground">
-              5 founding partner spots — 3 months free, permanent rate lock at
-              £99/month.
+          <div className="flex flex-col items-center lg:items-start gap-3 w-full">
+            <p className="text-sm font-semibold text-[#1E3A8A]">
+              Try it free — generate a live report for any website
             </p>
+            <DemoForm />
           </div>
         </div>
 

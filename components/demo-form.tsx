@@ -69,7 +69,7 @@ export function DemoForm() {
     <form onSubmit={handleSubmit} className="space-y-3 w-full max-w-md">
       <div>
         <input
-          type="url"
+          type="text"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="https://yourclient.co.uk"

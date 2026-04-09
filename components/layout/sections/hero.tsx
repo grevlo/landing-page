@@ -4,10 +4,10 @@ import Link from "next/link";
 export const HeroSection = () => {
   return (
     <section id="demo" className="container w-full">
-      <div className="mx-auto py-16 md:py-24 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start lg:max-w-screen-xl">
+      <div className="mx-auto py-16 md:py-24 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center lg:max-w-screen-xl">
 
         {/* Left: headline + subheadline */}
-        <div className="space-y-6 text-center lg:text-left pt-4">
+        <div className="space-y-6 text-center lg:text-left">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1E3A8A] leading-tight">
             Stop compiling monthly reports manually.
           </h1>

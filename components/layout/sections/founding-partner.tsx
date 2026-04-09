@@ -26,7 +26,7 @@ export const FoundingPartnerSection = () => {
             Join the Founding 5.
           </h2>
 
-          <p className="text-lg text-white/80 leading-relaxed mb-10">
+          <p className="text-lg text-white/80 leading-relaxed mb-10 max-w-2xl mx-auto">
             We are looking for 5 UK web agencies to help shape Grevlo before
             public launch. As a founding partner you get full API access free
             for 3 months, a permanent rate lock at £99 per month afterwards,

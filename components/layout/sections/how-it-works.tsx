@@ -61,7 +61,7 @@ export const HowItWorksSection = async () => {
       </div>
 
       {/* Code block */}
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-2xl mx-auto overflow-x-auto">
         <div className="rounded-xl overflow-hidden shadow-xl border border-white/5" style={{ background: "#24292e" }}>
           {/* Title bar */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-white/10" style={{ background: "#1f2428" }}>

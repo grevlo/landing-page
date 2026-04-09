@@ -92,8 +92,11 @@ html {
 }
 
 .prose table {
+  display: block;
   width: 100%;
   border-collapse: collapse;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .prose table th {

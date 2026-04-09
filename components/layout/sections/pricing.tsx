@@ -19,7 +19,7 @@ export const PricingSection = () => {
       </h2>
 
       {/* Competitor comparison — table on desktop, cards on mobile */}
-      <div className="max-w-3xl mx-auto mb-16">
+      <div className="max-w-3xl mx-auto mb-16 overflow-x-auto">
 
         {/* Desktop table (sm and up) */}
         <div className="hidden sm:block overflow-x-auto">

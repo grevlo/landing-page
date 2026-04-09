@@ -66,13 +66,13 @@ export function DemoForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 w-full max-w-md">
+    <form onSubmit={handleSubmit} className="space-y-3 w-full">
       <div>
         <input
           type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          placeholder="https://yourclient.co.uk"
+          value={agencyName}
+          onChange={(e) => setAgencyName(e.target.value)}
+          placeholder="Acme Digital Ltd"
           required
           disabled={state === "loading"}
           className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]/30 focus:border-[#1E3A8A] disabled:opacity-50 transition"
@@ -81,9 +81,9 @@ export function DemoForm() {
       <div>
         <input
           type="text"
-          value={agencyName}
-          onChange={(e) => setAgencyName(e.target.value)}
-          placeholder="Your agency name"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          placeholder="https://youragency.co.uk"
           required
           disabled={state === "loading"}
           className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]/30 focus:border-[#1E3A8A] disabled:opacity-50 transition"
@@ -119,7 +119,7 @@ export function DemoForm() {
       </button>
       {state === "loading" && (
         <p className="text-xs text-gray-400 text-center">
-          This takes about 45 seconds — we&apos;re running a live audit of your site.
+          Takes ~45 seconds. We run a live audit — not cached data.
         </p>
       )}
       {state === "error" && (

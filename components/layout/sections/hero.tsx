@@ -1,127 +1,59 @@
 import { DemoForm } from "@/components/demo-form";
-
-const PdfMockup = () => (
-  <div className="relative hidden md:flex items-center justify-center">
-    <div
-      className="w-full max-w-sm bg-white rounded-xl overflow-hidden border border-gray-100"
-      style={{
-        transform: "rotate(-2deg)",
-        boxShadow:
-          "0 20px 60px rgba(0,0,0,0.12), 0 4px 20px rgba(30,58,138,0.1)",
-      }}
-    >
-      {/* PDF header */}
-      <div className="bg-[#1E3A8A] px-5 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-7 h-7 bg-white/15 rounded flex items-center justify-center">
-            <div className="w-3.5 h-3.5 bg-[#A3E635] rounded-sm" />
-          </div>
-          <div>
-            <div className="text-white text-xs font-semibold leading-tight">
-              Your Agency
-            </div>
-            <div className="text-white/50 text-[10px]">Performance Report</div>
-          </div>
-        </div>
-        <div className="text-white/40 text-[10px]">Feb 2026</div>
-      </div>
-
-      {/* Client info */}
-      <div className="px-5 py-2.5 bg-gray-50 border-b border-gray-100">
-        <div className="text-[11px] font-semibold text-[#1E3A8A]">
-          Acme Corporation
-        </div>
-        <div className="text-[10px] text-gray-400">
-          acmecorp.co.uk · Monthly Report
-        </div>
-      </div>
-
-      {/* Metric cards */}
-      <div className="px-5 py-4 grid grid-cols-3 gap-2">
-        <div className="bg-green-50 border border-green-200 rounded-lg p-2.5 text-center">
-          <div className="text-green-700 text-[13px] font-bold leading-tight">
-            99.97%
-          </div>
-          <div className="text-gray-500 text-[9px] mt-0.5">Uptime</div>
-        </div>
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-2.5 text-center">
-          <div className="text-amber-700 text-[13px] font-bold leading-tight">
-            87/100
-          </div>
-          <div className="text-gray-500 text-[9px] mt-0.5">Performance</div>
-        </div>
-        <div className="bg-green-50 border border-green-200 rounded-lg p-2.5 text-center">
-          <div className="text-green-700 text-[13px] font-bold leading-tight">
-            Valid
-          </div>
-          <div className="text-gray-500 text-[9px] mt-0.5">SSL</div>
-        </div>
-      </div>
-
-      {/* Data table */}
-      <div className="px-5 pb-4">
-        <div className="text-[9px] font-semibold text-[#1E3A8A] mb-2 uppercase tracking-wider">
-          Uptime Log
-        </div>
-        <div className="space-y-1">
-          {[
-            { date: "01 Feb", event: "Scheduled check", status: "OK" },
-            { date: "12 Feb", event: "Scheduled check", status: "OK" },
-            { date: "28 Feb", event: "Scheduled check", status: "OK" },
-          ].map((row) => (
-            <div
-              key={row.date}
-              className="flex justify-between items-center py-1 border-b border-gray-100"
-            >
-              <span className="text-[9px] text-gray-400 w-12">{row.date}</span>
-              <span className="text-[9px] text-gray-400 flex-1 px-1">
-                {row.event}
-              </span>
-              <span className="text-[9px] text-green-600 font-semibold">
-                {row.status}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* PDF footer */}
-      <div className="px-5 py-3 bg-[#1E3A8A]/5 border-t border-gray-100 flex items-center justify-between">
-        <div className="text-[9px] text-gray-400">Pixel Perfect Agency</div>
-        <div className="text-[9px] text-[#1E3A8A] font-semibold">
-          pixelperfect.co.uk
-        </div>
-      </div>
-    </div>
-  </div>
-);
+import Link from "next/link";
 
 export const HeroSection = () => {
   return (
-    <section className="container w-full">
-      <div className="mx-auto py-20 md:py-32 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center lg:max-w-screen-xl">
-        {/* Left: text */}
-        <div className="space-y-8 text-center lg:text-left">
+    <section id="demo" className="container w-full">
+      <div className="mx-auto py-16 md:py-24 grid lg:grid-cols-2 gap-12 lg:gap-16 items-start lg:max-w-screen-xl">
+
+        {/* Left: headline + subheadline */}
+        <div className="space-y-6 text-center lg:text-left pt-4">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1E3A8A] leading-tight">
             Stop compiling monthly reports manually.
           </h1>
-
-          <p className="max-w-[600px] mx-auto lg:mx-0 text-xl text-muted-foreground leading-relaxed">
+          <p className="max-w-[560px] mx-auto lg:mx-0 text-xl text-muted-foreground leading-relaxed">
             Grevlo is a headless API for web agencies. Give us your client&apos;s
-            URL. Get back a fully branded white-label PDF performance report
-            covering uptime, PageSpeed, and SSL. Automatically.
+            URL. Get back a fully branded white-label PDF covering uptime,
+            PageSpeed, and SSL. Automatically.
           </p>
-
-          <div className="flex flex-col items-center lg:items-start gap-3 w-full">
-            <p className="text-sm font-semibold text-[#1E3A8A]">
-              Try it free — generate a live report for any website
-            </p>
-            <DemoForm />
+          <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 pt-2">
+            <Link
+              href="/#founding-partner"
+              className="inline-block bg-[#1E3A8A] text-white font-semibold text-sm px-6 py-3 rounded-lg hover:bg-[#162d6e] transition-colors"
+            >
+              Apply for Founding Partner Access
+            </Link>
+            <Link
+              href="https://api.grevlo.com/docs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-sm text-[#1E3A8A] font-medium hover:underline py-3"
+            >
+              View API docs →
+            </Link>
           </div>
         </div>
 
-        {/* Right: PDF mockup (desktop only) */}
-        <PdfMockup />
+        {/* Right: Try It Now form */}
+        <div className="w-full rounded-2xl border border-gray-200 bg-white shadow-sm p-6 md:p-8">
+          <h2 className="text-lg font-bold text-[#1E3A8A] mb-1">See it in action</h2>
+          <p className="text-sm text-gray-500 mb-6">
+            Generate a real report for your agency in 45 seconds. No signup needed.
+          </p>
+          <DemoForm />
+          <p className="mt-4 text-xs text-gray-400 text-center">
+            Generating real reports since April 2026 ·{" "}
+            <Link
+              href="https://api.grevlo.com/docs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#1E3A8A] transition-colors underline"
+            >
+              api.grevlo.com/docs
+            </Link>
+          </p>
+        </div>
+
       </div>
     </section>
   );

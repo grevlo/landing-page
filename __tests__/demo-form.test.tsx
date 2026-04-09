@@ -57,8 +57,8 @@ async function fillAndSubmit(
   email = 'test@agency.com',
 ) {
   const user = userEvent.setup()
-  await user.type(screen.getByPlaceholderText(/yourclient\.co\.uk/i), url)
-  await user.type(screen.getByPlaceholderText(/your agency name/i), agency)
+  await user.type(screen.getByPlaceholderText(/acme digital ltd/i), agency)
+  await user.type(screen.getByPlaceholderText(/youragency\.co\.uk/i), url)
   await user.type(screen.getByPlaceholderText(/your@agency\.com/i), email)
   await user.click(screen.getByRole('button', { name: /generate my free report/i }))
 }
@@ -68,8 +68,8 @@ async function fillAndSubmit(
 describe('DemoForm — rendering', () => {
   it('renders all three input fields', () => {
     render(<DemoForm />)
-    expect(screen.getByPlaceholderText(/yourclient\.co\.uk/i)).toBeInTheDocument()
-    expect(screen.getByPlaceholderText(/your agency name/i)).toBeInTheDocument()
+    expect(screen.getByPlaceholderText(/youragency\.co\.uk/i)).toBeInTheDocument()
+    expect(screen.getByPlaceholderText(/acme digital ltd/i)).toBeInTheDocument()
     expect(screen.getByPlaceholderText(/your@agency\.com/i)).toBeInTheDocument()
   })
 
@@ -86,8 +86,8 @@ describe('DemoForm — rendering', () => {
 
   it('all fields and button are enabled on initial render', () => {
     render(<DemoForm />)
-    expect(screen.getByPlaceholderText(/yourclient\.co\.uk/i)).not.toBeDisabled()
-    expect(screen.getByPlaceholderText(/your agency name/i)).not.toBeDisabled()
+    expect(screen.getByPlaceholderText(/youragency\.co\.uk/i)).not.toBeDisabled()
+    expect(screen.getByPlaceholderText(/acme digital ltd/i)).not.toBeDisabled()
     expect(screen.getByPlaceholderText(/your@agency\.com/i)).not.toBeDisabled()
     expect(screen.getByRole('button')).not.toBeDisabled()
   })
@@ -120,8 +120,8 @@ describe('DemoForm — happy path', () => {
     mockFetchPending()
     render(<DemoForm />)
     await fillAndSubmit()
-    expect(screen.getByPlaceholderText(/yourclient\.co\.uk/i)).toBeDisabled()
-    expect(screen.getByPlaceholderText(/your agency name/i)).toBeDisabled()
+    expect(screen.getByPlaceholderText(/youragency\.co\.uk/i)).toBeDisabled()
+    expect(screen.getByPlaceholderText(/acme digital ltd/i)).toBeDisabled()
     expect(screen.getByPlaceholderText(/your@agency\.com/i)).toBeDisabled()
     expect(screen.getByRole('button')).toBeDisabled()
   })
@@ -171,8 +171,8 @@ describe('DemoForm — happy path', () => {
     await user.click(screen.getByRole('button', { name: /try another url/i }))
 
     expect(screen.getByRole('button', { name: /generate my free report/i })).toBeInTheDocument()
-    expect(screen.getByPlaceholderText(/yourclient\.co\.uk/i)).toHaveValue('')
-    expect(screen.getByPlaceholderText(/your agency name/i)).toHaveValue('')
+    expect(screen.getByPlaceholderText(/youragency\.co\.uk/i)).toHaveValue('')
+    expect(screen.getByPlaceholderText(/acme digital ltd/i)).toHaveValue('')
     expect(screen.getByPlaceholderText(/your@agency\.com/i)).toHaveValue('')
   })
 
@@ -294,12 +294,12 @@ describe('DemoForm — edge cases', () => {
 
   it('URL field is marked required', () => {
     render(<DemoForm />)
-    expect(screen.getByPlaceholderText(/yourclient\.co\.uk/i)).toBeRequired()
+    expect(screen.getByPlaceholderText(/youragency\.co\.uk/i)).toBeRequired()
   })
 
   it('agency name field is marked required', () => {
     render(<DemoForm />)
-    expect(screen.getByPlaceholderText(/your agency name/i)).toBeRequired()
+    expect(screen.getByPlaceholderText(/acme digital ltd/i)).toBeRequired()
   })
 
   it('email field is marked required', () => {
@@ -316,6 +316,6 @@ describe('DemoForm — edge cases', () => {
     mockFetchSuccess()
     render(<DemoForm />)
     // type="text" is used so jsdom does not block bare domain submission
-    expect(screen.getByPlaceholderText(/yourclient\.co\.uk/i)).toHaveAttribute('type', 'text')
+    expect(screen.getByPlaceholderText(/youragency\.co\.uk/i)).toHaveAttribute('type', 'text')
   })
 })

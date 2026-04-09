@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/layout/sections/hero";
 import { HowItWorksSection } from "@/components/layout/sections/how-it-works";
 import { PricingSection } from "@/components/layout/sections/pricing";
 import { ProblemSection } from "@/components/layout/sections/problem";
+import { WhatYouGetSection } from "@/components/layout/sections/what-you-get";
 import { WorksWithSection } from "@/components/layout/sections/works-with";
 
 export const metadata = {
@@ -16,6 +17,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <WhatYouGetSection />
       <ProblemSection />
       <HowItWorksSection />
       <PricingSection />

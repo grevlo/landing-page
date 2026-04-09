@@ -125,7 +125,7 @@ export const PricingSection = () => {
             size="lg"
             className="w-full mt-6 bg-[#A3E635] text-[#1E3A8A] hover:bg-[#92d120] font-bold text-base"
           >
-            <Link href="#founding-partner">Apply for Founding Partner Access</Link>
+            <Link href="/#founding-partner">Apply for Founding Partner Access</Link>
           </Button>
         </div>
 

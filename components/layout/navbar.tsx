@@ -86,8 +86,8 @@ export const Navbar = () => {
                 asChild
                 className="w-full bg-[#A3E635] text-[#1E3A8A] hover:bg-[#92d120] font-semibold"
               >
-                <Link href="/#demo" onClick={() => setIsOpen(false)}>
-                  Try It Free
+                <Link href="/#founding-partner" onClick={() => setIsOpen(false)}>
+                  Apply for Access
                 </Link>
               </Button>
             </SheetFooter>
@@ -115,7 +115,7 @@ export const Navbar = () => {
           size="sm"
           className="bg-[#A3E635] text-[#1E3A8A] hover:bg-[#92d120] font-semibold"
         >
-          <Link href="/#demo">Try It Free</Link>
+          <Link href="/#demo">Try the Demo</Link>
         </Button>
       </div>
     </header>

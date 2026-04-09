@@ -96,24 +96,24 @@ describe('DemoForm — rendering', () => {
 // ── Happy path ────────────────────────────────────────────────────────────────
 
 describe('DemoForm — happy path', () => {
-  it('calls the correct API URL with the submitted URL', async () => {
+  it('calls the correct API URL with the submitted URL and agencyName', async () => {
     mockFetchSuccess()
     render(<DemoForm />)
-    await fillAndSubmit('https://myclient.co.uk')
+    await fillAndSubmit('https://myclient.co.uk', 'Test Agency')
 
     await waitFor(() => {
       expect(fetch).toHaveBeenCalledWith(
-        'https://api.grevlo.com/v1/demo/report?url=https%3A%2F%2Fmyclient.co.uk',
+        'https://api.grevlo.com/v1/demo/report?url=https%3A%2F%2Fmyclient.co.uk&agencyName=Test%20Agency',
       )
     })
   })
 
-  it('shows loading text and 15-second warning while request is in flight', async () => {
+  it('shows loading text and 45-second warning while request is in flight', async () => {
     mockFetchPending()
     render(<DemoForm />)
     await fillAndSubmit()
-    expect(screen.getByText(/running pagespeed/i)).toBeInTheDocument()
-    expect(screen.getByText(/15 seconds/i)).toBeInTheDocument()
+    expect(screen.getByText(/generating your report/i)).toBeInTheDocument()
+    expect(screen.getByText(/45 seconds/i)).toBeInTheDocument()
   })
 
   it('disables all inputs and button during loading', async () => {

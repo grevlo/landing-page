@@ -18,7 +18,7 @@ export function DemoForm() {
 
     try {
       const targetUrl = url.startsWith("http") ? url : `https://${url}`;
-      const apiUrl = `https://api.grevlo.com/v1/demo/report?url=${encodeURIComponent(targetUrl)}`;
+      const apiUrl = `https://api.grevlo.com/v1/demo/report?url=${encodeURIComponent(targetUrl)}&agencyName=${encodeURIComponent(agencyName)}`;
 
       const res = await fetch(apiUrl);
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
@@ -111,7 +111,7 @@ export function DemoForm() {
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
             </svg>
-            Running PageSpeed &amp; SSL scan…
+            Generating your report…
           </span>
         ) : (
           "Generate My Free Report"
@@ -119,7 +119,7 @@ export function DemoForm() {
       </button>
       {state === "loading" && (
         <p className="text-xs text-gray-400 text-center">
-          This takes around 15 seconds — we&apos;re running a live scan.
+          This takes about 45 seconds — we&apos;re running a live audit of your site.
         </p>
       )}
       {state === "error" && (

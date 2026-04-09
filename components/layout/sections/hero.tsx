@@ -19,17 +19,15 @@ export const HeroSection = () => {
           <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 pt-2">
             <Link
               href="/#founding-partner"
-              className="inline-block bg-[#1E3A8A] text-white font-semibold text-sm px-6 py-3 rounded-lg hover:bg-[#162d6e] transition-colors"
+              className="inline-block bg-[#A3E635] text-[#1E3A8A] font-bold text-sm px-6 py-3 rounded-lg hover:bg-[#92d120] transition-colors"
             >
               Apply for Founding Partner Access
             </Link>
             <Link
-              href="https://api.grevlo.com/docs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block text-sm text-[#1E3A8A] font-medium hover:underline py-3"
+              href="/#demo"
+              className="inline-block text-sm font-semibold text-[#1E3A8A] border border-[#1E3A8A]/30 px-6 py-3 rounded-lg hover:border-[#1E3A8A] hover:bg-[#1E3A8A]/5 transition-colors"
             >
-              View API docs →
+              Try the Demo
             </Link>
           </div>
         </div>

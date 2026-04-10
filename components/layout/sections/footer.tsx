@@ -21,6 +21,12 @@ export const FooterSection = () => {
               <br />
               Company No. 17121751
             </p>
+            <Link
+              href="/#founding-partner"
+              className="inline-block mt-4 text-sm font-semibold bg-[#A3E635] text-[#1E3A8A] px-3 py-1 rounded-full hover:bg-[#92d120] transition-colors"
+            >
+              Apply for Access
+            </Link>
           </div>
 
           {/* Col 2 — navigation */}
@@ -42,14 +48,6 @@ export const FooterSection = () => {
               <li>
                 <Link href="/blog" className="text-sm text-gray-600 hover:text-[#1E3A8A] transition-colors">
                   Blog
-                </Link>
-              </li>
-              <li className="mt-1">
-                <Link
-                  href="/#founding-partner"
-                  className="inline-block text-sm font-semibold bg-[#A3E635] text-[#1E3A8A] px-3 py-1 rounded-full hover:bg-[#92d120] transition-colors"
-                >
-                  Apply for Access
                 </Link>
               </li>
             </ul>

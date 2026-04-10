@@ -1,5 +1,6 @@
 import { FooterSection } from "@/components/layout/sections/footer";
 import { FoundingPartnerSection } from "@/components/layout/sections/founding-partner";
+import { FromTheBlogSection } from "@/components/layout/sections/from-the-blog";
 import { HeroSection } from "@/components/layout/sections/hero";
 import { HowItWorksSection } from "@/components/layout/sections/how-it-works";
 import { PricingSection } from "@/components/layout/sections/pricing";
@@ -23,6 +24,7 @@ export default function Home() {
       <PricingSection />
       <FoundingPartnerSection />
       <WorksWithSection />
+      <FromTheBlogSection />
       <FooterSection />
     </>
   );

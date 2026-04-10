@@ -23,12 +23,6 @@ export const HeroSection = () => {
             >
               Apply for Founding Partner Access
             </Link>
-            <Link
-              href="/#demo"
-              className="inline-block text-sm font-semibold text-[#1E3A8A] border border-[#1E3A8A]/30 px-6 py-3 rounded-lg hover:border-[#1E3A8A] hover:bg-[#1E3A8A]/5 transition-colors"
-            >
-              Try the Demo
-            </Link>
           </div>
         </div>
 

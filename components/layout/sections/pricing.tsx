@@ -1,22 +1,33 @@
 import { Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
-const features = [
-  "Unlimited reports — no per-client fees",
-  "Full white-label included as standard",
-  "API access included — never gated",
-  "No per-data-source charges",
-  "No seat restrictions",
-  "Uptime, PageSpeed, and SSL built in",
+const TALLY_FORM_ID = "dWjbEz";
+
+const starterFeatures = [
+  "Up to 15 client domains",
+  "Uptime, PageSpeed and SSL reports",
+  "Your agency branding on every PDF",
+  "Full API access",
+  "Email support",
+];
+
+const standardFeatures = [
+  "Unlimited client domains",
+  "Uptime, PageSpeed and SSL reports",
+  "Your agency branding on every PDF",
+  "Full API access",
+  "Priority support",
+  "Permanent rate lock (founding partners only)",
 ];
 
 export const PricingSection = () => {
   return (
     <section id="pricing" className="container py-24 sm:py-32">
-      <h2 className="text-3xl md:text-4xl font-bold text-[#1E3A8A] text-center mb-16">
-        One price. No surprises.
+      <h2 className="text-3xl md:text-4xl font-bold text-[#1E3A8A] text-center mb-4">
+        Simple, flat pricing.
       </h2>
+      <p className="text-center text-muted-foreground mb-16">
+        No per-client fees. No per-source charges. Cancel anytime.
+      </p>
 
       {/* Competitor comparison — table on desktop, cards on mobile */}
       <div className="max-w-3xl mx-auto mb-16 overflow-x-auto">
@@ -53,7 +64,7 @@ export const PricingSection = () => {
               </tr>
               <tr className="bg-[#1E3A8A]">
                 <td className="py-3 px-4 text-white font-semibold">Grevlo</td>
-                <td className="py-3 px-4 text-white font-semibold">£99/month</td>
+                <td className="py-3 px-4 text-white font-semibold">from £49/month</td>
                 <td className="py-3 px-4 text-[#A3E635] font-semibold">Yes</td>
                 <td className="py-3 px-4 text-white font-semibold">Headless API</td>
               </tr>
@@ -67,7 +78,7 @@ export const PricingSection = () => {
             { name: "AgencyAnalytics", cost: "~$749/month", uptime: "No", arch: "Dashboard", grevlo: false },
             { name: "Swydo",           cost: "~$474/month", uptime: "No", arch: "Dashboard", grevlo: false },
             { name: "DashThis",        cost: "Variable",    uptime: "No", arch: "Dashboard", grevlo: false },
-            { name: "Grevlo",          cost: "£99/month",   uptime: "Yes", arch: "Headless API", grevlo: true },
+            { name: "Grevlo",          cost: "from £49/month", uptime: "Yes", arch: "Headless API", grevlo: true },
           ].map((row) => (
             <div
               key={row.name}
@@ -94,39 +105,79 @@ export const PricingSection = () => {
         </p>
       </div>
 
-      <div className="max-w-lg mx-auto">
-        <div
-          className="rounded-2xl border-2 border-[#1E3A8A] bg-white p-8"
-          style={{ boxShadow: "0 8px 32px rgba(30,58,138,0.15)" }}
-        >
-          {/* Price */}
-          <div className="mb-8">
-            <div className="flex items-end gap-2 mb-1">
-              <span className="text-5xl font-bold text-[#1E3A8A]">£99</span>
-              <span className="text-muted-foreground mb-2">/month</span>
+      {/* Two-tier pricing cards */}
+      <div className="max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+
+          {/* Starter */}
+          <div className="rounded-2xl border border-gray-200 bg-white p-8 flex flex-col">
+            <div className="mb-6">
+              <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">Starter</p>
+              <div className="flex items-end gap-1 mb-1">
+                <span className="text-4xl font-bold text-[#1E3A8A]">£49</span>
+                <span className="text-muted-foreground mb-1">/month</span>
+              </div>
+              <p className="text-sm text-muted-foreground">Perfect for growing agencies</p>
             </div>
-            <p className="text-muted-foreground text-sm">
-              or £890/year — save two months
-            </p>
+
+            <ul className="space-y-3 mb-8 flex-1">
+              {starterFeatures.map((feature) => (
+                <li key={feature} className="flex items-start gap-3">
+                  <Check className="w-4 h-4 text-[#A3E635] mt-0.5 shrink-0" />
+                  <span className="text-sm text-foreground">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <button
+              data-tally-open={TALLY_FORM_ID}
+              data-tally-layout="modal"
+              data-tally-emoji-text="👋"
+              data-tally-emoji-animation="wave"
+              className="w-full bg-[#A3E635] text-[#1E3A8A] hover:bg-[#92d120] font-bold text-sm py-3 px-6 rounded-lg transition-colors cursor-pointer"
+            >
+              Apply for Access
+            </button>
           </div>
 
-          {/* Features */}
-          <ul className="space-y-3 mb-8">
-            {features.map((feature) => (
-              <li key={feature} className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-[#A3E635] mt-0.5 shrink-0" />
-                <span className="text-foreground">{feature}</span>
-              </li>
-            ))}
-          </ul>
-
-          <Button
-            asChild
-            size="lg"
-            className="w-full mt-6 bg-[#A3E635] text-[#1E3A8A] hover:bg-[#92d120] font-bold text-base"
+          {/* Standard — visually dominant */}
+          <div
+            className="rounded-2xl bg-[#1E3A8A] p-8 flex flex-col relative overflow-hidden"
+            style={{ boxShadow: "0 12px 40px rgba(30,58,138,0.3)" }}
           >
-            <Link href="/#founding-partner">Apply for Founding Partner Access</Link>
-          </Button>
+            {/* Most Popular badge */}
+            <span className="absolute top-4 right-4 bg-[#A3E635] text-[#1E3A8A] text-xs font-bold px-3 py-1 rounded-full">
+              Most Popular
+            </span>
+
+            <div className="mb-6">
+              <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-3">Standard</p>
+              <div className="flex items-end gap-1 mb-1">
+                <span className="text-4xl font-bold text-white">£99</span>
+                <span className="text-white/60 mb-1">/month</span>
+              </div>
+              <p className="text-sm text-white/70">For established agencies</p>
+            </div>
+
+            <ul className="space-y-3 mb-8 flex-1">
+              {standardFeatures.map((feature) => (
+                <li key={feature} className="flex items-start gap-3">
+                  <Check className="w-4 h-4 text-[#A3E635] mt-0.5 shrink-0" />
+                  <span className="text-sm text-white/90">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <button
+              data-tally-open={TALLY_FORM_ID}
+              data-tally-layout="modal"
+              data-tally-emoji-text="👋"
+              data-tally-emoji-animation="wave"
+              className="w-full bg-[#A3E635] text-[#1E3A8A] hover:bg-[#92d120] font-bold text-sm py-3 px-6 rounded-lg transition-colors cursor-pointer"
+            >
+              Apply for Access
+            </button>
+          </div>
         </div>
 
         {/* Comparison callout */}
@@ -139,8 +190,8 @@ export const PricingSection = () => {
           </p>
         </div>
 
-        <p className="text-center text-sm text-muted-foreground mt-4">
-          Cheaper than one hour of a junior developer&apos;s billable time.
+        <p className="text-center text-xs text-muted-foreground mt-2">
+          Founding partner rate lock applies to your chosen tier permanently. Standard pricing may increase after the founding partner programme closes.
         </p>
       </div>
     </section>

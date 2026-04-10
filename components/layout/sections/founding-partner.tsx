@@ -8,7 +8,7 @@ const TALLY_FORM_ID = "dWjbEz";
 
 const benefits = [
   "3 months free access — no card required",
-  "Permanent £99/month rate lock",
+  "Lock in your chosen tier permanently — your rate never increases",
   "Concierge onboarding — we do the integration work for you",
   "Direct input into the product roadmap",
   "Your logo on the Grevlo website",
@@ -29,7 +29,7 @@ export const FoundingPartnerSection = () => {
           <p className="text-lg text-white/80 leading-relaxed mb-10 max-w-2xl mx-auto">
             We are looking for 5 UK web agencies to help shape Grevlo before
             public launch. As a founding partner you get full API access free
-            for 3 months, a permanent rate lock at £99 per month afterwards,
+            for 3 months, a permanent rate lock at your chosen tier afterwards,
             and concierge onboarding — we set up your branding, build your
             first report template, and write your integration script. In
             exchange we ask for an honest testimonial, a backlink from your

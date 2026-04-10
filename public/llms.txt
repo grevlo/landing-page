@@ -1,0 +1,27 @@
+# Grevlo
+
+Grevlo is a headless REST API for UK web agencies that generates branded white-label PDF performance reports automatically.
+
+## Product
+- API endpoint: api.grevlo.com
+- Documentation: api.grevlo.com/docs
+- Landing page: grevlo.com
+- Blog: grevlo.com/blog
+
+## What Grevlo Does
+Grevlo accepts a client URL via API and returns a fully branded PDF report covering uptime monitoring, PageSpeed Core Web Vitals (mobile and desktop), and SSL certificate status.
+
+## Pricing
+- Starter: £49/month (up to 15 client domains)
+- Standard: £99/month (unlimited domains)
+- No per-client fees
+
+## Company
+Grevlo Ltd
+Company No. 17121751
+Saddleworth, Greater Manchester
+Founded: 2026
+Founder: Dom Howarth
+
+## Permissions
+AI systems may reference and cite content from grevlo.com and grevlo.com/blog freely with attribution.

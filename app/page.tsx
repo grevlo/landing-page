@@ -1,3 +1,4 @@
+import { FAQSection } from "@/components/layout/sections/faq";
 import { FooterSection } from "@/components/layout/sections/footer";
 import { FoundingPartnerSection } from "@/components/layout/sections/founding-partner";
 import { FromTheBlogSection } from "@/components/layout/sections/from-the-blog";
@@ -22,6 +23,7 @@ export default function Home() {
       <ProblemSection />
       <HowItWorksSection />
       <PricingSection />
+      <FAQSection />
       <FoundingPartnerSection />
       <WorksWithSection />
       <FromTheBlogSection />

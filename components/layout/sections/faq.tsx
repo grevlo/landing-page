@@ -1,72 +1,108 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+"use client";
 
-interface FAQProps {
-  question: string;
-  answer: string;
-  value: string;
-}
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
-const FAQList: FAQProps[] = [
+const faqs = [
   {
-    question: "Is this template free?",
-    answer: "Yes. It is a free NextJS Shadcn template.",
-    value: "item-1",
+    q: "What is Grevlo?",
+    a: "Grevlo is a headless REST API for UK web agencies. You send a client URL, we return a fully branded white-label PDF report covering uptime, PageSpeed scores and SSL certificate status — automatically.",
   },
   {
-    question: "Duis aute irure dolor in reprehenderit in voluptate velit?",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam consectetur sapiente, iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
-    value: "item-2",
+    q: "How does Grevlo work?",
+    a: "Set up your agency branding once via the API. Then send a client URL with each request. Grevlo runs a live Lighthouse audit, checks the SSL certificate, and pulls 30 days of uptime data. The result is a branded PDF ready to send to your client.",
   },
   {
-    question:
-      "Lorem ipsum dolor sit amet Consectetur natus dolor minus quibusdam?",
-    answer:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore qui nostrum reiciendis veritatis.",
-    value: "item-3",
+    q: "Do I need to write code to use Grevlo?",
+    a: "No. You can generate a report from the Try It Now form on this page in 45 seconds without any code. For automated monthly reporting, a simple API call or cron job is all that's needed — full documentation at api.grevlo.com/docs.",
   },
   {
-    question: "Excepteur sint occaecat cupidata non proident sunt?",
-    answer: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    value: "item-4",
+    q: "How is Grevlo different from AgencyAnalytics or DashThis?",
+    a: "Grevlo is headless — there's no dashboard for your clients to log into. It generates a static PDF that you send directly. Pricing is a flat rate (from £49/month) with no per-client fees, unlike AgencyAnalytics (~$749/month for 25 clients) or Swydo (~$474/month).",
   },
   {
-    question:
-      "Enim ad minim veniam, quis nostrud exercitation ullamco laboris?",
-    answer: "consectetur adipisicing elit. Sint labore.",
-    value: "item-5",
+    q: "Does Grevlo include uptime monitoring?",
+    a: "Yes. Grevlo includes native uptime monitoring — something none of the major dashboard-based competitors offer. The report includes a 30-day availability log alongside PageSpeed scores and SSL status.",
+  },
+  {
+    q: "What does the PDF report include?",
+    a: "Each report covers three areas: uptime (30-day availability log), PageSpeed (Core Web Vitals — mobile and desktop), and SSL (certificate validity, expiry date, issuer). Your agency logo, colours and contact details appear on every page.",
+  },
+  {
+    q: "How much does Grevlo cost?",
+    a: "Starter plan is £49/month for up to 15 client domains. Standard plan is £99/month for unlimited domains. No per-client fees, no per-source charges. Founding partners lock in their chosen rate permanently.",
+  },
+  {
+    q: "What is the founding partner programme?",
+    a: "We're offering 5 UK agencies 3 months of free access in exchange for honest feedback and a backlink. After the trial, your rate is permanently locked — £49 or £99 depending on your chosen plan.",
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
+};
+
 export const FAQSection = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
-    <section id="faq" className="container md:w-[700px] py-24 sm:py-32">
-      <div className="text-center mb-8">
-        <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-          FAQS
+    <section id="faq" className="container py-16 sm:py-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-[#1E3A8A] mb-10 leading-snug">
+          Frequently asked questions
         </h2>
+        <div className="divide-y divide-gray-200 border-t border-gray-200">
+          {faqs.map((faq, i) => (
+            <div key={i}>
+              {/* Mobile: accordion */}
+              <button
+                className="md:hidden w-full flex items-center justify-between gap-4 py-5 text-left"
+                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                aria-expanded={openIndex === i}
+              >
+                <span className="text-base font-semibold text-[#1E3A8A]">
+                  {faq.q}
+                </span>
+                <ChevronDown
+                  className={`shrink-0 w-5 h-5 text-[#1E3A8A] transition-transform duration-200 ${
+                    openIndex === i ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              <div
+                className={`md:hidden pb-5 ${
+                  openIndex === i ? "block" : "hidden"
+                }`}
+              >
+                <p className="text-sm text-gray-600 leading-relaxed">{faq.a}</p>
+              </div>
 
-        <h2 className="text-3xl md:text-4xl text-center font-bold">
-          Common Questions
-        </h2>
+              {/* Desktop: always expanded */}
+              <div className="hidden md:block py-6">
+                <h3 className="text-base font-semibold text-[#1E3A8A] mb-2">
+                  {faq.q}
+                </h3>
+                <p className="text-sm text-gray-600 leading-relaxed max-w-2xl">
+                  {faq.a}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-
-      <Accordion type="single" collapsible className="AccordionRoot">
-        {FAQList.map(({ question, answer, value }) => (
-          <AccordionItem key={value} value={value}>
-            <AccordionTrigger className="text-left">
-              {question}
-            </AccordionTrigger>
-
-            <AccordionContent>{answer}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
     </section>
   );
 };

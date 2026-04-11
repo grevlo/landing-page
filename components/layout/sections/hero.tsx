@@ -9,13 +9,14 @@ export const HeroSection = () => {
         {/* Left: headline + subheadline */}
         <div className="space-y-6 text-center lg:text-left">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#1E3A8A] leading-tight">
-            Stop compiling monthly reports manually.
+            Automate Web Agency Reporting with One API Call
           </h1>
-          <p className="max-w-[560px] mx-auto lg:mx-0 text-xl text-muted-foreground leading-relaxed">
-            Grevlo is a headless API for web agencies. Give us your client&apos;s
-            URL. Get back a fully branded white-label PDF covering uptime,
-            PageSpeed, and SSL. Automatically.
-          </p>
+          <h2 className="max-w-[560px] mx-auto lg:mx-0 text-xl text-muted-foreground leading-relaxed font-normal">
+            Stop compiling monthly reports manually. Grevlo is a headless API
+            for web agencies — give us your client&apos;s URL, get back a fully
+            branded white-label PDF covering uptime, PageSpeed, and SSL.
+            Automatically.
+          </h2>
           <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 pt-2">
             <Link
               href="/#founding-partner"
@@ -28,7 +29,7 @@ export const HeroSection = () => {
 
         {/* Right: Try It Now form */}
         <div className="w-full rounded-2xl border border-gray-200 bg-white shadow-sm p-6 md:p-8">
-          <h2 className="text-lg font-bold text-[#1E3A8A] mb-1">See it in action</h2>
+          <h3 className="text-lg font-bold text-[#1E3A8A] mb-1">See it in action</h3>
           <p className="text-sm text-gray-500 mb-6">
             Generate a real report for your agency in 45 seconds. No signup needed.
           </p>

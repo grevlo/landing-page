@@ -23,12 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
-    {
-      url: 'https://grevlo.com/whitepaper',
-      lastModified: new Date('2026-04-01'),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
+
 ...blogUrls,
   ]
 }

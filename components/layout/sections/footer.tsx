@@ -22,7 +22,7 @@ export const FooterSection = () => {
               Company No. 17121751
             </p>
             <Link
-              href="/#founding-partner"
+              href="https://www.grevlo.com/#founding-partner"
               className="inline-block mt-4 text-sm font-semibold bg-[#A3E635] text-[#1E3A8A] px-3 py-1 rounded-full hover:bg-[#92d120] transition-colors"
             >
               Apply for Access

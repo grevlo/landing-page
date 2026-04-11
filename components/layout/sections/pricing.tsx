@@ -58,7 +58,7 @@ export const PricingSection = () => {
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-3 px-4 text-[#2F3E46]">DashThis</td>
-                <td className="py-3 px-4 text-[#2F3E46]">Variable</td>
+                <td className="py-3 px-4 text-[#2F3E46]">Per dashboard</td>
                 <td className="py-3 px-4 text-[#2F3E46]">No</td>
                 <td className="py-3 px-4 text-[#2F3E46]">Dashboard</td>
               </tr>
@@ -77,7 +77,7 @@ export const PricingSection = () => {
           {[
             { name: "AgencyAnalytics", cost: "~$749/month", uptime: "No", arch: "Dashboard", grevlo: false },
             { name: "Swydo",           cost: "~$474/month", uptime: "No", arch: "Dashboard", grevlo: false },
-            { name: "DashThis",        cost: "Variable",    uptime: "No", arch: "Dashboard", grevlo: false },
+            { name: "DashThis",        cost: "Per dashboard", uptime: "No", arch: "Dashboard", grevlo: false },
             { name: "Grevlo",          cost: "from £49/month", uptime: "Yes", arch: "Headless API", grevlo: true },
           ].map((row) => (
             <div

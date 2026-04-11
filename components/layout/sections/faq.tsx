@@ -35,7 +35,7 @@ const faqs: { q: string; a: string; node?: React.ReactNode }[] = [
   },
   {
     q: "How is Grevlo different from AgencyAnalytics or DashThis?",
-    a: "Grevlo is headless — there's no dashboard for your clients to log into. It generates a static PDF that you send directly. Pricing is a flat rate (from £49/month) with no per-client fees, unlike AgencyAnalytics (~$749/month for 25 clients) or Swydo (~$474/month).",
+    a: "Grevlo is headless — there's no dashboard for your clients to log into. It generates a static PDF that you send directly. Pricing is a flat rate (from £49/month) with no per-client fees, unlike dashboard tools that charge per client and scale costs with your roster — see the comparison table on the pricing section for verified current figures.",
   },
   {
     q: "Does Grevlo include uptime monitoring?",

@@ -46,19 +46,19 @@ export const PricingSection = () => {
             <tbody>
               <tr className="border-b border-gray-100">
                 <td className="py-3 px-4 text-[#2F3E46]">AgencyAnalytics</td>
-                <td className="py-3 px-4 text-[#2F3E46]">~$749/month</td>
+                <td className="py-3 px-4 text-[#2F3E46]">$625/month</td>
                 <td className="py-3 px-4 text-[#2F3E46]">No</td>
                 <td className="py-3 px-4 text-[#2F3E46]">Dashboard</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-3 px-4 text-[#2F3E46]">Swydo</td>
-                <td className="py-3 px-4 text-[#2F3E46]">~$474/month</td>
+                <td className="py-3 px-4 text-[#2F3E46]">$249/month</td>
                 <td className="py-3 px-4 text-[#2F3E46]">No</td>
                 <td className="py-3 px-4 text-[#2F3E46]">Dashboard</td>
               </tr>
               <tr className="border-b border-gray-100">
                 <td className="py-3 px-4 text-[#2F3E46]">DashThis</td>
-                <td className="py-3 px-4 text-[#2F3E46]">Per dashboard</td>
+                <td className="py-3 px-4 text-[#2F3E46]">$324/month</td>
                 <td className="py-3 px-4 text-[#2F3E46]">No</td>
                 <td className="py-3 px-4 text-[#2F3E46]">Dashboard</td>
               </tr>
@@ -75,9 +75,9 @@ export const PricingSection = () => {
         {/* Mobile cards (below sm) */}
         <div className="flex flex-col gap-3 sm:hidden">
           {[
-            { name: "AgencyAnalytics", cost: "~$749/month", uptime: "No", arch: "Dashboard", grevlo: false },
-            { name: "Swydo",           cost: "~$474/month", uptime: "No", arch: "Dashboard", grevlo: false },
-            { name: "DashThis",        cost: "Per dashboard", uptime: "No", arch: "Dashboard", grevlo: false },
+            { name: "AgencyAnalytics", cost: "$625/month",    uptime: "No", arch: "Dashboard", grevlo: false },
+            { name: "Swydo",           cost: "$249/month",    uptime: "No", arch: "Dashboard", grevlo: false },
+            { name: "DashThis",        cost: "$324/month",    uptime: "No", arch: "Dashboard", grevlo: false },
             { name: "Grevlo",          cost: "from £49/month", uptime: "Yes", arch: "Headless API", grevlo: true },
           ].map((row) => (
             <div
@@ -101,7 +101,7 @@ export const PricingSection = () => {
         </div>
 
         <p className="text-xs text-muted-foreground mt-3 text-center max-w-xl mx-auto">
-          Competitor pricing estimated based on publicly available information, April 2026. Actual costs vary by usage. All competitor prices shown in USD.
+          Pricing verified directly from provider websites, April 2026, monthly billing, 25 retainer clients. AgencyAnalytics Core tier. DashThis Business Plan. Swydo based on 2 data sources per client. All competitor prices in USD. Verify current pricing directly with each provider before making decisions.
         </p>
       </div>
 
@@ -184,9 +184,9 @@ export const PricingSection = () => {
         <div className="my-8 rounded-r-xl border-l-4 border-l-[#1E3A8A] bg-[#EFF6FF] p-5">
           <p className="text-sm text-[#2F3E46] leading-relaxed">
             <span className="font-bold text-[#1E3A8A]">
-              AgencyAnalytics charges £300+/month
+              Dashboard tools charge per client.
             </span>{" "}
-            for 20 clients and still does not include native uptime monitoring.
+            Every new retainer increases your software bill — and none of them include native uptime or SSL monitoring.
           </p>
         </div>
 

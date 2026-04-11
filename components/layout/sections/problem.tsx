@@ -1,6 +1,6 @@
 const oldWay = [
   "Manually pulling uptime logs",
-  "Paying £300/month for dashboards clients ignore",
+  "Paying per-client fees for dashboards clients ignore",
   "Spending Sunday compiling spreadsheets",
   "Data scattered across 5 different tools",
 ];
@@ -27,7 +27,7 @@ export const ProblemSection = () => {
             not developers proving infrastructure value.
           </p>
           <p>
-            You are either paying £300 per month for a dashboard your clients
+            You are either paying per-client fees for a dashboard your clients
             never log into, or spending Sunday afternoon copying numbers into a
             Word document.
           </p>

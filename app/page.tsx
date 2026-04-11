@@ -7,6 +7,7 @@ import { HowItWorksSection } from "@/components/layout/sections/how-it-works";
 import { PricingSection } from "@/components/layout/sections/pricing";
 import { ProblemSection } from "@/components/layout/sections/problem";
 import { WhatYouGetSection } from "@/components/layout/sections/what-you-get";
+import { WhitepaperPromoSection } from "@/components/layout/sections/whitepaper-promo";
 import { WorksWithSection } from "@/components/layout/sections/works-with";
 
 export const metadata = {
@@ -23,6 +24,7 @@ export default function Home() {
       <ProblemSection />
       <HowItWorksSection />
       <PricingSection />
+      <WhitepaperPromoSection />
       <FAQSection />
       <FoundingPartnerSection />
       <WorksWithSection />

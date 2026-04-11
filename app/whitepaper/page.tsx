@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
+
 
 export const metadata: Metadata = {
   title:
@@ -163,10 +163,15 @@ export default function WhitepaperPage() {
               </p>
             </div>
 
-            <div
-              data-tally-src="https://tally.so/r/RGJZJP"
-              data-tally-width="100%"
-              data-tally-align-left="1"
+            <iframe
+              src="https://tally.so/embed/RGJZJP?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              width="100%"
+              height="300"
+              frameBorder={0}
+              marginHeight={0}
+              marginWidth={0}
+              title="Download the Free Report"
+              style={{ border: "none", minHeight: "300px" }}
             />
 
             <p className="mt-6 text-xs text-gray-400 text-center">
@@ -189,7 +194,6 @@ export default function WhitepaperPage() {
           </p>
         </footer>
       </main>
-      <Script src="https://tally.so/widgets/embed.js" strategy="lazyOnload" />
     </>
   );
 }

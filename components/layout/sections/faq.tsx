@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
+import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-const faqs = [
+const faqs: { q: string; a: string; node?: React.ReactNode }[] = [
   {
     q: "What is Grevlo?",
     a: "Grevlo is a headless REST API for UK web agencies. You send a client URL, we return a fully branded white-label PDF report covering uptime, PageSpeed scores and SSL certificate status — automatically.",
@@ -15,6 +16,22 @@ const faqs = [
   {
     q: "Do I need to write code to use Grevlo?",
     a: "No. You can generate a report from the Try It Now form on this page in 45 seconds without any code. For automated monthly reporting, a simple API call or cron job is all that's needed — full documentation at api.grevlo.com/docs.",
+    node: (
+      <>
+        No. You can generate a report from the Try It Now form on this page in
+        45 seconds without any code. For automated monthly reporting, a simple
+        API call or cron job is all that&apos;s needed — full documentation at{" "}
+        <Link
+          href="https://api.grevlo.com/docs"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#1E3A8A] underline hover:text-[#92d120] transition-colors"
+        >
+          api.grevlo.com/docs
+        </Link>
+        .
+      </>
+    ),
   },
   {
     q: "How is Grevlo different from AgencyAnalytics or DashThis?",
@@ -87,7 +104,7 @@ export const FAQSection = () => {
                   openIndex === i ? "block" : "hidden"
                 }`}
               >
-                <p className="text-sm text-gray-600 leading-relaxed">{faq.a}</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{faq.node ?? faq.a}</p>
               </div>
 
               {/* Desktop: always expanded */}
@@ -96,7 +113,7 @@ export const FAQSection = () => {
                   {faq.q}
                 </h3>
                 <p className="text-sm text-gray-600 leading-relaxed max-w-2xl">
-                  {faq.a}
+                  {faq.node ?? faq.a}
                 </p>
               </div>
             </div>

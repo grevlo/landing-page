@@ -7,7 +7,6 @@ type FormState = "idle" | "loading" | "success" | "error";
 export function DemoForm() {
   const [url, setUrl] = useState("");
   const [agencyName, setAgencyName] = useState("");
-  const [email, setEmail] = useState("");
   const [state, setState] = useState<FormState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -56,7 +55,7 @@ export function DemoForm() {
           </Link>
         </p>
         <button
-          onClick={() => { setState("idle"); setUrl(""); setAgencyName(""); setEmail(""); }}
+          onClick={() => { setState("idle"); setUrl(""); setAgencyName(""); }}
           className="text-xs text-gray-400 hover:text-gray-600 transition-colors"
         >
           Try another URL
@@ -66,35 +65,32 @@ export function DemoForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 w-full">
+    <form onSubmit={handleSubmit} className="space-y-4 w-full">
       <div>
+        <label htmlFor="demo-agency" className="block text-sm font-medium text-gray-700 mb-1">
+          Agency name
+        </label>
         <input
+          id="demo-agency"
           type="text"
           value={agencyName}
           onChange={(e) => setAgencyName(e.target.value)}
-          placeholder="Acme Digital Ltd"
+          placeholder="e.g. Acme Digital Ltd"
           required
           disabled={state === "loading"}
           className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]/30 focus:border-[#1E3A8A] disabled:opacity-50 transition"
         />
       </div>
       <div>
+        <label htmlFor="demo-url" className="block text-sm font-medium text-gray-700 mb-1">
+          Your website URL
+        </label>
         <input
+          id="demo-url"
           type="text"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          placeholder="https://youragency.co.uk"
-          required
-          disabled={state === "loading"}
-          className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]/30 focus:border-[#1E3A8A] disabled:opacity-50 transition"
-        />
-      </div>
-      <div>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="your@agency.com"
+          placeholder="e.g. https://youragency.co.uk"
           required
           disabled={state === "loading"}
           className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]/30 focus:border-[#1E3A8A] disabled:opacity-50 transition"
@@ -125,6 +121,9 @@ export function DemoForm() {
       {state === "error" && (
         <p className="text-xs text-red-500">{errorMsg}</p>
       )}
+      <p className="text-xs text-gray-400 text-center pt-1">
+        We don&apos;t store your details. Your report is generated in real time.
+      </p>
     </form>
   );
 }

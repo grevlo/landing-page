@@ -54,23 +54,32 @@ function mockFetchPending() {
 async function fillAndSubmit(
   url = 'https://example.com',
   agency = 'Test Agency',
-  email = 'test@agency.com',
 ) {
   const user = userEvent.setup()
   await user.type(screen.getByPlaceholderText(/acme digital ltd/i), agency)
   await user.type(screen.getByPlaceholderText(/youragency\.co\.uk/i), url)
-  await user.type(screen.getByPlaceholderText(/your@agency\.com/i), email)
   await user.click(screen.getByRole('button', { name: /generate my free report/i }))
 }
 
 // ── Render ────────────────────────────────────────────────────────────────────
 
 describe('DemoForm — rendering', () => {
-  it('renders all three input fields', () => {
+  it('renders both input fields', () => {
     render(<DemoForm />)
     expect(screen.getByPlaceholderText(/youragency\.co\.uk/i)).toBeInTheDocument()
     expect(screen.getByPlaceholderText(/acme digital ltd/i)).toBeInTheDocument()
-    expect(screen.getByPlaceholderText(/your@agency\.com/i)).toBeInTheDocument()
+  })
+
+  it('does not render an email field', () => {
+    render(<DemoForm />)
+    expect(screen.queryByPlaceholderText(/your@agency\.com/i)).not.toBeInTheDocument()
+    expect(screen.queryByLabelText(/email/i)).not.toBeInTheDocument()
+  })
+
+  it('renders visible labels for both fields', () => {
+    render(<DemoForm />)
+    expect(screen.getByLabelText(/agency name/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/your website url/i)).toBeInTheDocument()
   })
 
   it('renders the submit button with correct label', () => {
@@ -84,12 +93,16 @@ describe('DemoForm — rendering', () => {
     expect(screen.queryByText(/downloading/i)).not.toBeInTheDocument()
   })
 
-  it('all fields and button are enabled on initial render', () => {
+  it('both fields and button are enabled on initial render', () => {
     render(<DemoForm />)
     expect(screen.getByPlaceholderText(/youragency\.co\.uk/i)).not.toBeDisabled()
     expect(screen.getByPlaceholderText(/acme digital ltd/i)).not.toBeDisabled()
-    expect(screen.getByPlaceholderText(/your@agency\.com/i)).not.toBeDisabled()
     expect(screen.getByRole('button')).not.toBeDisabled()
+  })
+
+  it('renders the privacy note', () => {
+    render(<DemoForm />)
+    expect(screen.getByText(/we don't store your details/i)).toBeInTheDocument()
   })
 })
 
@@ -122,7 +135,6 @@ describe('DemoForm — happy path', () => {
     await fillAndSubmit()
     expect(screen.getByPlaceholderText(/youragency\.co\.uk/i)).toBeDisabled()
     expect(screen.getByPlaceholderText(/acme digital ltd/i)).toBeDisabled()
-    expect(screen.getByPlaceholderText(/your@agency\.com/i)).toBeDisabled()
     expect(screen.getByRole('button')).toBeDisabled()
   })
 
@@ -173,7 +185,6 @@ describe('DemoForm — happy path', () => {
     expect(screen.getByRole('button', { name: /generate my free report/i })).toBeInTheDocument()
     expect(screen.getByPlaceholderText(/youragency\.co\.uk/i)).toHaveValue('')
     expect(screen.getByPlaceholderText(/acme digital ltd/i)).toHaveValue('')
-    expect(screen.getByPlaceholderText(/your@agency\.com/i)).toHaveValue('')
   })
 
   it('calls the API exactly once per submit — no duplicate requests', async () => {
@@ -300,16 +311,6 @@ describe('DemoForm — edge cases', () => {
   it('agency name field is marked required', () => {
     render(<DemoForm />)
     expect(screen.getByPlaceholderText(/acme digital ltd/i)).toBeRequired()
-  })
-
-  it('email field is marked required', () => {
-    render(<DemoForm />)
-    expect(screen.getByPlaceholderText(/your@agency\.com/i)).toBeRequired()
-  })
-
-  it('email field has type="email" for browser-native validation', () => {
-    render(<DemoForm />)
-    expect(screen.getByPlaceholderText(/your@agency\.com/i)).toHaveAttribute('type', 'email')
   })
 
   it('URL field accepts bare domains without a protocol', async () => {

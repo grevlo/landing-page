@@ -3,6 +3,7 @@
  */
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { act } from 'react'
 import { DemoForm } from '@/components/demo-form'
 
 // ── Mocks ────────────────────────────────────────────────────────────────────
@@ -35,11 +36,14 @@ function mockFetchSuccess() {
   } as unknown as Response)
 }
 
-function mockFetchHttpError(status: number) {
+function mockFetchHttpError(status: number, body?: object) {
   global.fetch = jest.fn().mockResolvedValue({
     ok: false,
     status,
     blob: () => Promise.resolve(new Blob()),
+    json: body
+      ? () => Promise.resolve(body)
+      : () => Promise.reject(new Error('No JSON body')),
   } as unknown as Response)
 }
 
@@ -117,6 +121,7 @@ describe('DemoForm — happy path', () => {
     await waitFor(() => {
       expect(fetch).toHaveBeenCalledWith(
         'https://api.grevlo.com/v1/demo/report?url=https%3A%2F%2Fmyclient.co.uk&agencyName=Test%20Agency',
+        expect.objectContaining({ signal: expect.any(AbortSignal) }),
       )
     })
   })
@@ -129,7 +134,7 @@ describe('DemoForm — happy path', () => {
     expect(screen.getByText(/45 seconds/i)).toBeInTheDocument()
   })
 
-  it('disables all inputs and button during loading', async () => {
+  it('disables both inputs and button during loading', async () => {
     mockFetchPending()
     render(<DemoForm />)
     await fillAndSubmit()
@@ -270,6 +275,7 @@ describe('DemoForm — edge cases', () => {
     await waitFor(() =>
       expect(fetch).toHaveBeenCalledWith(
         expect.stringContaining('url=https%3A%2F%2Fexample.co.uk'),
+        expect.anything(),
       ),
     )
   })
@@ -281,6 +287,7 @@ describe('DemoForm — edge cases', () => {
     await waitFor(() =>
       expect(fetch).toHaveBeenCalledWith(
         expect.stringContaining('url=http%3A%2F%2Foldsite.co.uk'),
+        expect.anything(),
       ),
     )
   })
@@ -313,10 +320,119 @@ describe('DemoForm — edge cases', () => {
     expect(screen.getByPlaceholderText(/acme digital ltd/i)).toBeRequired()
   })
 
-  it('URL field accepts bare domains without a protocol', async () => {
-    mockFetchSuccess()
+  it('URL field accepts bare domains without a protocol', () => {
     render(<DemoForm />)
     // type="text" is used so jsdom does not block bare domain submission
     expect(screen.getByPlaceholderText(/youragency\.co\.uk/i)).toHaveAttribute('type', 'text')
+  })
+})
+
+// ── URL inline validation ─────────────────────────────────────────────────────
+
+describe('DemoForm — URL inline validation', () => {
+  it('shows inline error beneath URL field when URL is empty on submit', async () => {
+    render(<DemoForm />)
+    const user = userEvent.setup()
+    await user.type(screen.getByPlaceholderText(/acme digital ltd/i), 'Test Agency')
+    await user.click(screen.getByRole('button', { name: /generate my free report/i }))
+    expect(screen.getByText(/please enter a website url/i)).toBeInTheDocument()
+    expect(fetch).not.toHaveBeenCalled()
+  })
+
+  it('shows inline error for localhost URL without calling the API', async () => {
+    render(<DemoForm />)
+    const user = userEvent.setup()
+    await user.type(screen.getByPlaceholderText(/acme digital ltd/i), 'Test Agency')
+    await user.type(screen.getByPlaceholderText(/youragency\.co\.uk/i), 'http://localhost/app')
+    await user.click(screen.getByRole('button', { name: /generate my free report/i }))
+    expect(screen.getByText(/publicly accessible/i)).toBeInTheDocument()
+    expect(fetch).not.toHaveBeenCalled()
+  })
+
+  it('clears the URL inline error when the user types in the URL field', async () => {
+    render(<DemoForm />)
+    const user = userEvent.setup()
+    await user.type(screen.getByPlaceholderText(/acme digital ltd/i), 'Test Agency')
+    // Submit with empty URL to trigger the inline error
+    await user.click(screen.getByRole('button', { name: /generate my free report/i }))
+    expect(screen.getByText(/please enter a website url/i)).toBeInTheDocument()
+    // Now type in the URL field — error should clear
+    await user.type(screen.getByPlaceholderText(/youragency\.co\.uk/i), 'h')
+    expect(screen.queryByText(/please enter a website url/i)).not.toBeInTheDocument()
+  })
+})
+
+// ── API error message display ─────────────────────────────────────────────────
+
+describe('DemoForm — API error message parsing', () => {
+  it('displays the specific message field from the API JSON response', async () => {
+    mockFetchHttpError(400, { error: 'Invalid URL', message: 'Please provide a website URL.' })
+    render(<DemoForm />)
+    await fillAndSubmit()
+    await waitFor(() =>
+      expect(screen.getByText('Please provide a website URL.')).toBeInTheDocument(),
+    )
+  })
+
+  it('falls back to detail field from ProblemDetails when message is absent', async () => {
+    mockFetchHttpError(502, { title: 'Unreachable', detail: "We couldn't reach that website. Please check the URL and try again.", status: 502 })
+    render(<DemoForm />)
+    await fillAndSubmit()
+    await waitFor(() =>
+      expect(screen.getByText(/couldn't reach that website/i)).toBeInTheDocument(),
+    )
+  })
+
+  it('falls back to generic message when API response body is not JSON', async () => {
+    mockFetchHttpError(500)
+    render(<DemoForm />)
+    await fillAndSubmit()
+    await waitFor(() =>
+      expect(screen.getByText(/something went wrong/i)).toBeInTheDocument(),
+    )
+  })
+})
+
+// ── Cancel after 30 seconds ───────────────────────────────────────────────────
+
+describe('DemoForm — cancel after 30 seconds', () => {
+  afterEach(() => {
+    jest.useRealTimers()
+  })
+
+  it('does not show cancel option immediately on loading', async () => {
+    jest.useFakeTimers()
+    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
+    mockFetchPending()
+    render(<DemoForm />)
+    await user.type(screen.getByPlaceholderText(/acme digital ltd/i), 'Test Agency')
+    await user.type(screen.getByPlaceholderText(/youragency\.co\.uk/i), 'https://example.com')
+    await user.click(screen.getByRole('button', { name: /generate my free report/i }))
+    expect(screen.queryByText(/taking longer than expected/i)).not.toBeInTheDocument()
+  })
+
+  it('shows cancel option after 30 seconds in loading state', async () => {
+    jest.useFakeTimers()
+    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
+    mockFetchPending()
+    render(<DemoForm />)
+    await user.type(screen.getByPlaceholderText(/acme digital ltd/i), 'Test Agency')
+    await user.type(screen.getByPlaceholderText(/youragency\.co\.uk/i), 'https://example.com')
+    await user.click(screen.getByRole('button', { name: /generate my free report/i }))
+    await act(async () => { jest.advanceTimersByTime(30_001) })
+    expect(screen.getByText(/taking longer than expected/i)).toBeInTheDocument()
+  })
+
+  it('clicking cancel resets the form to idle', async () => {
+    jest.useFakeTimers()
+    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime })
+    mockFetchPending()
+    render(<DemoForm />)
+    await user.type(screen.getByPlaceholderText(/acme digital ltd/i), 'Test Agency')
+    await user.type(screen.getByPlaceholderText(/youragency\.co\.uk/i), 'https://example.com')
+    await user.click(screen.getByRole('button', { name: /generate my free report/i }))
+    await act(async () => { jest.advanceTimersByTime(30_001) })
+    await user.click(screen.getByText(/taking longer than expected/i))
+    expect(screen.getByRole('button', { name: /generate my free report/i })).not.toBeDisabled()
   })
 })

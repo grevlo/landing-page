@@ -1,40 +1,98 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
 export function DemoForm() {
-  const [url, setUrl] = useState("");
+  const [url, setUrl]               = useState("");
   const [agencyName, setAgencyName] = useState("");
-  const [state, setState] = useState<FormState>("idle");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [state, setState]           = useState<FormState>("idle");
+  const [errorMsg, setErrorMsg]     = useState("");
+  const [urlError, setUrlError]     = useState("");
+  const [showCancel, setShowCancel] = useState(false);
+  const abortRef = useRef<AbortController | null>(null);
+
+  // After 30 seconds in the loading state, offer a cancel option.
+  useEffect(() => {
+    if (state !== "loading") {
+      setShowCancel(false);
+      return;
+    }
+    const timer = setTimeout(() => setShowCancel(true), 30_000);
+    return () => clearTimeout(timer);
+  }, [state]);
+
+  function handleCancel() {
+    abortRef.current?.abort();
+    setState("idle");
+    setShowCancel(false);
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setState("loading");
+    setUrlError("");
     setErrorMsg("");
 
+    // ── Client-side URL validation ────────────────────────────────────────────
+
+    if (!url.trim()) {
+      setUrlError("Please enter a website URL");
+      return;
+    }
+
+    const lower = url.toLowerCase();
+    if (
+      lower.includes("localhost") ||
+      lower.includes("127.0.0.1") ||
+      /\b(192\.168\.|10\.\d+\.|172\.(1[6-9]|2\d|3[01])\.)/i.test(lower)
+    ) {
+      setUrlError("Please enter a publicly accessible website URL");
+      return;
+    }
+
+    // Auto-prepend https:// when no protocol is supplied.
+    const targetUrl = /^https?:\/\//i.test(url) ? url : `https://${url}`;
+
+    setState("loading");
+    abortRef.current = new AbortController();
+
     try {
-      const targetUrl = url.startsWith("http") ? url : `https://${url}`;
       const apiUrl = `https://api.grevlo.com/v1/demo/report?url=${encodeURIComponent(targetUrl)}&agencyName=${encodeURIComponent(agencyName)}`;
+      const res = await fetch(apiUrl, { signal: abortRef.current.signal });
 
-      const res = await fetch(apiUrl);
-      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      if (!res.ok) {
+        // Try to extract a user-friendly message from the API response body.
+        // Validation errors return { error, message }; upstream errors return
+        // ProblemDetails { detail, title }. Fall back to a generic message.
+        let msg = "Something went wrong — please try again.";
+        try {
+          const data = await res.json();
+          if (typeof data.message === "string" && data.message) msg = data.message;
+          else if (typeof data.detail  === "string" && data.detail)  msg = data.detail;
+        } catch {
+          /* non-JSON body — use generic message */
+        }
+        setErrorMsg(msg);
+        setState("error");
+        return;
+      }
 
-      const blob = await res.blob();
+      const blob      = await res.blob();
       const objectUrl = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = objectUrl;
-      a.download = "grevlo-demo-report.pdf";
+      const a         = document.createElement("a");
+      a.href          = objectUrl;
+      a.download      = "grevlo-demo-report.pdf";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(objectUrl);
 
       setState("success");
-    } catch {
-      setErrorMsg("Something went wrong generating your report. Please try again.");
+    } catch (err: unknown) {
+      // AbortError means the user clicked cancel — don't show an error.
+      if ((err as { name?: string })?.name === "AbortError") return;
+      setErrorMsg("Something went wrong — please try again.");
       setState("error");
     }
   }
@@ -65,7 +123,7 @@ export function DemoForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 w-full">
+    <form onSubmit={handleSubmit} noValidate className="space-y-4 w-full">
       <div>
         <label htmlFor="demo-agency" className="block text-sm font-medium text-gray-700 mb-1">
           Agency name
@@ -89,12 +147,15 @@ export function DemoForm() {
           id="demo-url"
           type="text"
           value={url}
-          onChange={(e) => setUrl(e.target.value)}
+          onChange={(e) => { setUrl(e.target.value); if (urlError) setUrlError(""); }}
           placeholder="e.g. https://youragency.co.uk"
           required
           disabled={state === "loading"}
-          className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]/30 focus:border-[#1E3A8A] disabled:opacity-50 transition"
+          className={`w-full rounded-lg border bg-white px-4 py-2.5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]/30 focus:border-[#1E3A8A] disabled:opacity-50 transition ${urlError ? "border-red-400" : "border-gray-200"}`}
         />
+        {urlError && (
+          <p className="mt-1 text-xs text-red-500">{urlError}</p>
+        )}
       </div>
       <button
         type="submit"
@@ -113,10 +174,21 @@ export function DemoForm() {
           "Generate My Free Report"
         )}
       </button>
-      {state === "loading" && (
+      {state === "loading" && !showCancel && (
         <p className="text-xs text-gray-400 text-center">
           Takes ~45 seconds. We run a live audit — not cached data.
         </p>
+      )}
+      {state === "loading" && showCancel && (
+        <div className="text-center">
+          <button
+            type="button"
+            onClick={handleCancel}
+            className="text-xs text-gray-500 underline hover:text-gray-700 transition-colors"
+          >
+            Taking longer than expected — cancel and try again
+          </button>
+        </div>
       )}
       {state === "error" && (
         <p className="text-xs text-red-500">{errorMsg}</p>

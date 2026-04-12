@@ -7,7 +7,7 @@ const oldWay = [
 
 const newWay = [
   "One API call generates the full report",
-  "from £49/month, no per-client fees",
+  "from £49/month, flat-rate pricing",
   "Branded PDF delivered automatically",
   "PageSpeed, SSL and uptime in one place",
 ];

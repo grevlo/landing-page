@@ -10,11 +10,11 @@ import Script from "next/script";
 export const metadata: Metadata = {
   title: "Grevlo — Automated White-Label PDF Reports for Web Agencies",
   description:
-    "Grevlo is a headless API for web agencies. POST a URL, get back a fully branded white-label PDF performance report covering uptime, PageSpeed, and SSL. From £49/month, no per-client fees.",
+    "Grevlo is a headless API for web agencies. POST a URL, get back a fully branded white-label PDF performance report covering uptime, PageSpeed, and SSL. From £49/month, no per-data-source fees.",
   openGraph: {
     title: "Grevlo — Automated White-Label PDF Reports for Web Agencies",
     description:
-      "Grevlo is a headless API for web agencies. POST a URL, get back a fully branded white-label PDF performance report covering uptime, PageSpeed, and SSL. From £49/month, no per-client fees.",
+      "Grevlo is a headless API for web agencies. POST a URL, get back a fully branded white-label PDF performance report covering uptime, PageSpeed, and SSL. From £49/month, no per-data-source fees.",
     url: "https://grevlo.com",
     siteName: "Grevlo",
     locale: "en_GB",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Grevlo — Automated White-Label PDF Reports for Web Agencies",
     description:
-      "Grevlo is a headless API for web agencies. POST a URL, get back a fully branded white-label PDF performance report covering uptime, PageSpeed, and SSL. From £49/month, no per-client fees.",
+      "Grevlo is a headless API for web agencies. POST a URL, get back a fully branded white-label PDF performance report covering uptime, PageSpeed, and SSL. From £49/month, no per-data-source fees.",
   },
 };
 

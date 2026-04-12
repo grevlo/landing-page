@@ -26,7 +26,7 @@ export const PricingSection = () => {
         Simple, flat pricing.
       </h2>
       <p className="text-center text-muted-foreground mb-16">
-        No per-client fees. No per-source charges. Cancel anytime.
+        Predictable pricing. No per-data-source fees. No surprise charges as you grow.
       </p>
 
       {/* Competitor comparison — table on desktop, cards on mobile */}

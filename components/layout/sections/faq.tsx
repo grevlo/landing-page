@@ -35,7 +35,7 @@ const faqs: { q: string; a: string; node?: React.ReactNode }[] = [
   },
   {
     q: "How is Grevlo different from AgencyAnalytics or DashThis?",
-    a: "Grevlo is headless — there's no dashboard for your clients to log into. It generates a static PDF that you send directly. Pricing is a flat rate (from £49/month) with no per-client fees, unlike dashboard tools that charge per client and scale costs with your roster — see the comparison table on the pricing section for verified current figures.",
+    a: "Grevlo is headless — there's no dashboard for your clients to log into. It generates a static PDF that you send directly. Pricing is a flat rate (from £49/month) with no per-data-source fees, unlike dashboard tools that charge per client and scale costs with your roster — see the comparison table on the pricing section for verified current figures.",
   },
   {
     q: "Does Grevlo include uptime monitoring?",
@@ -47,7 +47,7 @@ const faqs: { q: string; a: string; node?: React.ReactNode }[] = [
   },
   {
     q: "How much does Grevlo cost?",
-    a: "Starter plan is £49/month for up to 15 client domains. Standard plan is £99/month for unlimited domains. No per-client fees, no per-source charges. Founding partners lock in their chosen rate permanently.",
+    a: "Starter plan is £49/month for up to 15 client domains. Standard plan is £99/month for unlimited domains. No per-data-source fees. Founding partners lock in their chosen rate permanently.",
   },
   {
     q: "What is the founding partner programme?",

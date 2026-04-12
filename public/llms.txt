@@ -14,7 +14,7 @@ Grevlo accepts a client URL via API and returns a fully branded PDF report cover
 ## Pricing
 - Starter: £49/month (up to 15 client domains)
 - Standard: £99/month (unlimited domains)
-- No per-client fees
+- No per-data-source fees
 
 ## Company
 Grevlo Ltd

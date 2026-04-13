@@ -56,8 +56,7 @@ export const WhitepaperPromoSection = () => {
 
         {/* Small print — asterisk disclosure, legal requirement */}
         <p className="text-xs text-gray-500 mb-10">
-          *Illustrative calculation based on 20 clients at £80/hr — see full
-          report for methodology.
+          *Illustrative calculation, 2026 — based on 20 clients at £80/hr. See full report for methodology.
         </p>
 
         {/* What's inside */}

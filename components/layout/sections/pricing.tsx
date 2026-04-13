@@ -101,7 +101,7 @@ export const PricingSection = () => {
         </div>
 
         <p className="text-xs text-muted-foreground mt-3 text-center max-w-xl mx-auto">
-          Pricing verified directly from provider websites, April 2026, monthly billing, 25 retainer clients. AgencyAnalytics Core tier. DashThis Business Plan. Swydo based on 2 data sources per client. All competitor prices in USD. Verify current pricing directly with each provider before making decisions.
+          Pricing verified directly from provider websites, April 2026. Verify current pricing at agencyanalytics.com, dashthis.com and swydo.com before making purchasing decisions. Monthly billing, 25 retainer clients. AgencyAnalytics Core tier. DashThis Business Plan. Swydo based on 2 data sources per client. All competitor prices in USD.
         </p>
       </div>
 

@@ -104,14 +104,14 @@ export function DemoForm() {
           Your report is downloading now.
         </p>
         <p className="text-sm text-gray-600">
-          Want branded reports like this for all your clients, automatically?{" "}
-          <Link
-            href="/#founding-partner"
-            className="text-[#1E3A8A] font-medium underline hover:no-underline"
-          >
-            Apply for founding partner access →
-          </Link>
+          Want branded reports like this for all your clients, automatically?
         </p>
+        <Link
+          href="/#founding-partner"
+          className="text-sm text-[#1E3A8A] font-medium underline hover:no-underline"
+        >
+          Apply for founding partner access →
+        </Link>
         <button
           onClick={() => { setState("idle"); setUrl(""); setAgencyName(""); }}
           className="text-xs text-gray-400 hover:text-gray-600 transition-colors"

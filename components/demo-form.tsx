@@ -108,7 +108,7 @@ export function DemoForm() {
         </p>
         <Link
           href="/#founding-partner"
-          className="text-sm text-[#1E3A8A] font-medium underline hover:no-underline"
+          className="block text-sm text-[#1E3A8A] font-medium underline hover:no-underline"
         >
           Apply for founding partner access →
         </Link>

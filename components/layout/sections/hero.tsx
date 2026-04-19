@@ -12,10 +12,9 @@ export const HeroSection = () => {
             Automate Web Agency Reporting with One API Call
           </h1>
           <h2 className="max-w-[560px] mx-auto lg:mx-0 text-xl text-muted-foreground leading-relaxed font-normal">
-            Stop compiling monthly reports manually. Grevlo is a headless API
-            for web agencies — give us your client&apos;s URL, get back a fully
-            branded white-label PDF covering uptime, PageSpeed, and SSL.
-            Automatically.
+            The reporting tool built for web agencies on maintenance retainers.
+            Send a client URL, get back a branded PDF covering uptime, PageSpeed
+            and SSL — automatically, every month.
           </h2>
           <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 pt-2">
             <Link

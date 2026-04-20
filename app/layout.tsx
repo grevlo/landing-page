@@ -8,11 +8,11 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Grevlo — Automated White-Label PDF Reports for Web Agencies",
+  title: "Grevlo — Site Health Reporting for Web Agencies on Maintenance Retainers",
   description:
     "Grevlo automates monthly site health reports for UK web agencies managing maintenance retainers. Uptime, PageSpeed and SSL in a branded PDF. From £49/month flat.",
   openGraph: {
-    title: "Grevlo — Automated White-Label PDF Reports for Web Agencies",
+    title: "Grevlo — Site Health Reporting for Web Agencies on Maintenance Retainers",
     description:
       "Grevlo automates monthly site health reports for UK web agencies managing maintenance retainers. Uptime, PageSpeed and SSL in a branded PDF. From £49/month flat.",
     url: "https://grevlo.com",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Grevlo — Automated White-Label PDF Reports for Web Agencies",
+    title: "Grevlo — Site Health Reporting for Web Agencies on Maintenance Retainers",
     description:
       "Grevlo automates monthly site health reports for UK web agencies managing maintenance retainers. Uptime, PageSpeed and SSL in a branded PDF. From £49/month flat.",
   },

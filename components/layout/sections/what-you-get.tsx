@@ -16,7 +16,7 @@ export const WhatYouGetSection = () => {
             <div>
               <p className="font-semibold text-[#1E3A8A] mb-1">PageSpeed Score</p>
               <p className="text-sm text-gray-500 leading-relaxed">
-                Mobile and desktop Core Web Vitals from a live Lighthouse audit
+                Prove your maintenance is keeping the site fast. Mobile and desktop Core Web Vitals from a live Lighthouse audit — with specific fixes when improvements are needed.
               </p>
             </div>
           </div>
@@ -30,7 +30,7 @@ export const WhatYouGetSection = () => {
             <div>
               <p className="font-semibold text-[#1E3A8A] mb-1">SSL Certificate</p>
               <p className="text-sm text-gray-500 leading-relaxed">
-                Certificate validity, expiry date and issuer
+                Never miss an expiry. Certificate validity, days remaining, and issuer — so you know before your client does.
               </p>
             </div>
           </div>
@@ -44,7 +44,7 @@ export const WhatYouGetSection = () => {
             <div>
               <p className="font-semibold text-[#1E3A8A] mb-1">Uptime Log</p>
               <p className="text-sm text-gray-500 leading-relaxed">
-                30-day availability record from real monitoring
+                Show clients 99.8% availability without saying a word. 30-day availability record from real monitoring.
               </p>
             </div>
           </div>

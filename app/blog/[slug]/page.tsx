@@ -92,7 +92,7 @@ export default function BlogPost({ params }: Props) {
           reporting tools for UK web agencies.
         </p>
         <Link
-          href="https://grevlo.com"
+          href="https://www.grevlo.com/#founding-partner"
           className="inline-block bg-[#A3E635] text-[#1E3A8A] font-bold px-6 py-3 rounded-lg hover:bg-[#92d120] transition-colors"
         >
           Apply for Founding Partner Access →

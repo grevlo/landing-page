@@ -42,8 +42,16 @@ const faqs: { q: string; a: string; node?: React.ReactNode }[] = [
     a: "Yes. Grevlo includes native uptime monitoring — something none of the major dashboard-based competitors offer. The report includes a 30-day availability log alongside PageSpeed scores and SSL status.",
   },
   {
+    q: "Isn't basic uptime monitoring enough?",
+    a: "Standard uptime tools check whether your server responds — not whether the page actually works. Grevlo runs a live Lighthouse audit that renders the page and measures what users actually experience. A site can show 100% uptime while the homepage is a blank white screen.",
+  },
+  {
     q: "What does the PDF report include?",
     a: "Each report covers three areas: uptime (30-day availability log), PageSpeed (Core Web Vitals — mobile and desktop), and SSL (certificate validity, expiry date, issuer). Your agency logo, colours and contact details appear on every page.",
+  },
+  {
+    q: "How does Grevlo help with the new SSL certificate lifespan changes?",
+    a: "As of March 2026, SSL certificates can no longer exceed 200 days — down from 398 days. By March 2027 the limit drops to 100 days, and by 2029 it reaches just 47 days. Grevlo tracks your clients' SSL expiry dates and shows them prominently in every monthly report, so you know exactly how much runway remains on each certificate before your clients do.",
   },
   {
     q: "How much does Grevlo cost?",

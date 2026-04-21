@@ -50,6 +50,21 @@ export const FooterSection = () => {
                   Blog
                 </Link>
               </li>
+              <li>
+                <Link href="/whitepaper" className="text-sm text-gray-600 hover:text-[#1E3A8A] transition-colors">
+                  Research
+                </Link>
+              </li>
+              <li>
+                <Link href="https://api.grevlo.com/docs" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-600 hover:text-[#1E3A8A] transition-colors">
+                  Docs
+                </Link>
+              </li>
+              <li>
+                <Link href="/#founding-partner" className="text-sm text-gray-600 hover:text-[#1E3A8A] transition-colors">
+                  Founding Partner
+                </Link>
+              </li>
             </ul>
           </div>
 

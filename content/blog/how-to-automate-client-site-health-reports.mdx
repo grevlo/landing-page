@@ -1,0 +1,175 @@
+---
+title: "How to Automate Monthly Site Health Reports for Your Agency Clients"
+description: "A practical guide for UK web agencies who want to automate uptime, PageSpeed and SSL reporting without adding another dashboard your clients won't log into."
+date: "2026-04-22"
+author: "Dom Howarth"
+tags: ["reporting", "automation", "web agency", "pagespeed", "uptime", "ssl"]
+---
+
+Every web agency managing maintenance retainers faces the same problem at the end of every month.
+
+Someone — usually a developer or account manager — manually checks whether each client site is fast, whether it's been up, and whether the SSL certificate is still valid. They paste the results into a Google Doc, add the client's logo, and send it over.
+
+It takes four to six hours per client. Across twenty retainer clients, that's up to 120 hours of non-billable work every single month.
+
+This post explains how to automate that process entirely using a headless reporting API — so the report generates itself, arrives in the client's inbox on the first of every month, and nobody on your team had to touch it.
+
+## What Goes Into a Monthly Site Health Report
+
+Before automating anything, it's worth being precise about what a monthly site health report actually needs to cover. Most agencies include some combination of:
+
+**Uptime** — was the site available throughout the month? What was the uptime percentage? Were there any outages, and if so, when and for how long?
+
+**Performance** — how fast does the site load? This is increasingly important since Google's Core Web Vitals became a confirmed ranking factor. Clients want to know their mobile and desktop PageSpeed scores, and whether they're passing the three key metrics: Largest Contentful Paint, Cumulative Layout Shift, and Total Blocking Time.
+
+**SSL Certificate** — is the certificate valid? When does it expire? An expired SSL certificate takes the site offline and triggers browser security warnings. It's entirely preventable with the right monitoring in place.
+
+These three data points answer the questions every retainer client actually cares about: is the site working, is it fast, and is it secure?
+
+## Why Dashboard Tools Don't Solve This Problem
+
+The default assumption is that tools like AgencyAnalytics, DashThis, or Swydo handle this. They don't — not for site health specifically.
+
+Those platforms are excellent for marketing data: PPC performance, SEO rankings, social media analytics. They pull from advertising APIs and analytics platforms.
+
+None of them natively monitor whether your client's website was actually available last month. None of them run a live Lighthouse audit for Core Web Vitals. None of them track SSL certificate expiry.
+
+So agencies using those tools for campaign reporting are still manually checking site health separately — often by logging into UptimeRobot, running a PageSpeed test in a browser tab, and checking the SSL manually in another tab.
+
+The data exists. It just isn't assembled into a client-ready document automatically.
+
+## The Headless API Approach
+
+A headless reporting API is an endpoint that accepts a URL as input and returns a complete, branded PDF report as output.
+
+There's no dashboard to log into. No data source to configure. No connector to maintain.
+
+You send a request with your client's URL and your agency's branding details. The API runs a live Lighthouse audit, checks the SSL certificate, pulls 30 days of uptime data, and returns a white-labelled PDF with your logo, colours and contact details throughout.
+
+Here's what a basic API call looks like using Grevlo:
+
+```bash
+curl -X POST \
+  https://api.grevlo.com/v1/reports \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://yourclientsite.co.uk",
+    "branding": {
+      "agencyName": "Your Agency Ltd",
+      "primaryColour": "#1E3A8A",
+      "logoUrl": "https://youragency.co.uk/logo.png"
+    }
+  }'
+```
+
+The response is a PDF. You save it, email it, or attach it to your existing reporting workflow.
+
+## Automating Monthly Delivery
+
+The real value comes from scheduling this to run automatically on the first of every month for every client in your portfolio.
+
+### Option 1 — Cron Job
+
+If your agency has a developer who manages the hosting environment, the simplest approach is a cron job that fires on the first of each month:
+
+```bash
+# Runs at 9am on the 1st of every month
+0 9 1 * * node /path/to/generate-reports.js
+```
+
+The script loops through your client list, calls the Grevlo API for each URL, and emails the resulting PDFs to the relevant account manager.
+
+A basic implementation:
+
+```javascript
+const clients = [
+  {
+    name: "Client A",
+    url: "https://clienta.co.uk",
+    email: "account@youragency.co.uk"
+  },
+  {
+    name: "Client B",
+    url: "https://clientb.co.uk",
+    email: "account@youragency.co.uk"
+  }
+];
+
+async function generateReports() {
+  for (const client of clients) {
+    const response = await fetch(
+      "https://api.grevlo.com/v1/reports",
+      {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.GREVLO_API_KEY}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          url: client.url,
+          branding: {
+            agencyName: "Your Agency Ltd",
+            primaryColour: "#1E3A8A"
+          }
+        })
+      }
+    );
+
+    const pdf = await response.arrayBuffer();
+    await emailReport(client.email, client.name, pdf);
+  }
+}
+```
+
+### Option 2 — Make.com
+
+If your agency doesn't have a developer on staff, Make.com can orchestrate the same workflow without writing code.
+
+Set up a scenario that:
+
+1. Triggers on a schedule — first day of each month at 9am
+2. Reads your client list from a Google Sheet
+3. For each row, makes an HTTP request to the Grevlo API with the client's URL
+4. Saves the returned PDF to Google Drive
+5. Sends it via Gmail to the account manager
+
+The entire setup takes about 30 minutes and runs automatically every month without any manual intervention.
+
+### Option 3 — Zapier
+
+Zapier works similarly to Make.com and may already be part of your agency's tech stack. Use a Schedule trigger set to monthly, connect it to a Webhook action pointing at the Grevlo API, and pipe the output to Gmail or Slack.
+
+## What the Client Receives
+
+The output is a fully branded PDF with your agency's logo, colours and contact details on every page. The client sees your branding — not Grevlo's.
+
+Page 1 covers the summary — uptime percentage for the month, mobile and desktop PageSpeed scores, and SSL certificate status with expiry date. Each metric has a plain English status label: Excellent, Good, Action Recommended.
+
+If the site has performance issues, Page 2 is an Action Plan — specific Lighthouse audit recommendations in plain English. Not "your LCP score is 4.2 seconds" but "Eliminate render-blocking resources — potential saving of 1,860ms. Affected resource: /assets/main.css."
+
+The report reads like something your account manager produced. Because the data is live — run fresh for every report, never cached — the client knows it reflects their site right now.
+
+## The Business Case
+
+If a developer or account manager spends four hours per client per month on site health reporting at a blended billing rate of £80/hour, twenty clients costs the agency £6,400 per month in non-billable time.
+
+Grevlo starts at £49/month for up to 15 clients. For a twenty-client agency on the Standard plan at £99/month, the return is immediate.
+
+More importantly, the reports arrive before the client asks. Industry analysis consistently identifies poor communication as the leading cause of agency client churn — ahead of actual performance issues.
+
+A report in the client's inbox on the first of every month is proof that you're on top of their site without them having to chase you.
+
+## Getting Started
+
+You can try the report generation without an API key at [grevlo.com](https://grevlo.com) — enter your agency name and a client URL and a real branded PDF generates in about 45 seconds.
+
+Full API documentation is at [api.grevlo.com/docs](https://api.grevlo.com/docs).
+
+If you're managing maintenance retainers for five or more clients and want to automate the monthly site health report, the founding partner programme offers three months free access with a permanent rate lock at whichever tier suits your client volume.
+
+[Apply at grevlo.com](https://www.grevlo.com/#founding-partner)
+
+---
+
+*Grevlo Ltd is a headless reporting API for UK web agencies. Company No. 17121751.*

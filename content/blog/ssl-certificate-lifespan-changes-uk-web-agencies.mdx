@@ -1,0 +1,103 @@
+---
+title: "The SSL Certificate Crisis That's Already Happened — And What's Coming Next for UK Web Agencies"
+description: "Today Let's Encrypt began issuing 45-day certificates. The 200-day industry limit has been in force since March 2026. Here's the full timeline and what it means for agencies managing maintenance clients."
+date: "2026-05-13"
+author: "Dom Howarth"
+tags: ["ssl", "security", "web-agency", "maintenance", "certificates"]
+---
+
+Something changed today that most web agencies don't know about.
+
+Let's Encrypt — the certificate authority protecting the majority of websites on the internet — began issuing 45-day certificates this morning.
+
+That's today. 13th May 2026.
+
+Combined with the 200-day industry limit that came into force on 15th March 2026, the SSL landscape your maintenance clients operate in has fundamentally changed twice in the last two months.
+
+Most agencies are still managing SSL renewals the same way they did in 2024.
+
+## What Changed on 15 March 2026
+
+The CA/Browser Forum — the consortium of Certificate Authorities and browser vendors that governs how SSL certificates work globally — approved Ballot SC-081v3 in April 2025. Apple, Google, Microsoft and Mozilla all voted in favour. Not one browser vendor voted against.
+
+The first phase kicked in on 15 March 2026: any SSL certificate issued after that date cannot be valid for more than 200 days, down from the previous 398-day maximum. DigiCert began enforcing 199 days on 24 February 2026. Sectigo followed on 12 March 2026.
+
+If your client's certificate was issued or renewed after those dates, it already reflects the new limits.
+
+If you're still tracking SSL renewals on a spreadsheet built around annual or 13-month certificates, your renewal dates are now wrong.
+
+## What Changed Today — 13 May 2026
+
+Today Let's Encrypt switched its tlsserver ACME profile to issue 45-day certificates.
+
+This is currently opt-in — agencies using the default classic profile won't see certificates shorter than 90 days until February 2027. But that date is nine months away, and the infrastructure changes needed to handle shorter certificates safely take time to implement.
+
+There's also relevant context from this week: days before today's changes, Let's Encrypt temporarily halted certificate issuance after a technical incident. The planned changes went ahead as scheduled, but the incident highlights exactly the kind of silent failure that catches agencies off guard. Automated renewal assumes everything goes smoothly. It often doesn't.
+
+## The Full Timeline
+
+The compression doesn't stop at 200 days:
+
+- **Now (from 15 March 2026):** 200-day maximum
+- **15 March 2027:** 100-day maximum — quarterly renewals required
+- **15 March 2029:** 47-day maximum — roughly monthly renewals, with a 10-day Domain Control Validation reuse period
+
+Let's Encrypt specifically:
+
+- **Today (13 May 2026):** 45-day certificates via opt-in tlsserver profile
+- **10 February 2027:** Default certificates drop to 64 days with 10-day authorisation reuse
+- **16 February 2028:** Default certificates reach 45 days with 7-hour authorisation reuse
+
+The 7-hour authorisation reuse in 2028 is the figure that matters most. It means that almost every time Let's Encrypt renews a certificate, it cannot rely on cached proof of domain control. It needs to verify ownership from scratch.
+
+## Why This Is Specifically a Problem for Maintenance Agencies
+
+For a marketing agency whose certificates auto-renew on managed hosting, this is largely invisible. The platform handles it.
+
+For a web agency managing maintenance retainers across a varied portfolio — different hosts, different registrars, some on shared hosting, some on bespoke servers, some on WordPress with caching plugins — automated renewal is not guaranteed to work.
+
+Common failure modes include:
+
+- DNS changes that invalidate cached domain control proofs
+- WordPress caching plugins blocking the ACME challenge path
+- Server firewall rules preventing outbound certificate requests
+- Shared hosting environments without Certbot access
+- Clients who moved their domain without telling you
+
+When automated renewal fails, it fails silently. The server doesn't email you. The first indication is often a client message asking why their site is showing a security warning.
+
+Client-discovered SSL failures are one of the leading causes of maintenance retainer cancellations. The client's logic is simple — if you're managing my site and the SSL expired, what are you actually doing?
+
+## What Agencies Should Do Now
+
+**1. Audit your client SSL portfolio**
+
+For every client site you manage, check: when does the certificate expire, who manages the renewal, and is that renewal automated or manual? You need to know your exposure before you can address it.
+
+**2. Identify any manual renewal workflows and eliminate them**
+
+Any workflow that relies on you logging into a CA portal, generating a CSR and pasting it somewhere, needs to be replaced before March 2027. Manual renewal that's acceptable at 398 days is unsustainable at 100 days.
+
+**3. Update Certbot on self-managed servers**
+
+Certbot 4.1.0 introduced native ACME Renewal Information (ARI) support. ARI lets the CA tell your Certbot exactly when to renew — it adapts automatically to changing lifespans without you touching the cron job.
+
+**4. Add SSL expiry to your monthly reports**
+
+Knowing a certificate's expiry date is not enough — you need to see it alongside everything else you report on. When SSL expiry appears on the same page as uptime and PageSpeed scores, it becomes part of your standard monthly QA rather than something you check separately.
+
+## How Grevlo Helps
+
+Every Grevlo report includes the SSL certificate status, expiry date, and days remaining for the reported URL. This appears on page 1 alongside uptime and PageSpeed — three data points, one branded PDF, one API call.
+
+As certificate lifespans shorten, having an automated monthly record of each client's SSL status becomes more valuable not less. The report shows you where certificates are approaching renewal well before your client notices a browser warning.
+
+You can generate a free demo report against any client URL at [grevlo.com](https://grevlo.com) — no signup needed.
+
+If you're managing maintenance retainers for five or more clients, the founding partner programme offers three months free access with a permanent rate lock.
+
+[Apply at grevlo.com](https://www.grevlo.com/#founding-partner)
+
+---
+
+*Grevlo Ltd · Company No. 17121751*

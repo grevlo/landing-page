@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/blog";
 
 export const FromTheBlogSection = () => {
-  const posts = getAllPosts().slice(0, 2);
+  const posts = getAllPosts().slice(0, 3);
 
   return (
     <section className="container py-16">
@@ -10,7 +10,7 @@ export const FromTheBlogSection = () => {
         <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
           From the blog
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {posts.map((post) => (
             <Link
               key={post.slug}

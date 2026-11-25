@@ -41,8 +41,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# claude code
-.claude/
+# claude code: shared config in .claude/ is committed; personal settings and worktrees stay local
+.claude/settings.local.json
+.claude/worktrees/
 
 # local design references
 branding system/
